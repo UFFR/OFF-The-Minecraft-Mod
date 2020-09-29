@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:ingot_metal"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:nugget_metal",
+        "count": 9
+    }
+}

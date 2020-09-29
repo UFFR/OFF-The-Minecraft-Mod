@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "M M",
+        " M "
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "off:ingot_metal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "minecraft:bucket",
+        "count": 1
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "PNP",
+        "P P",
+        "PPP"
+    ],
+    
+    "key":
+    {
+        "N":
+        {
+            "item": "off:fragment_poor_metal"
+        },
+        
+        "P":
+        {
+        	"type": "forge:ore_dict",
+        	"ore": "blockGlass"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:bottle_large",
+        "count": 2
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "DD",
+        "DD"
+    ],
+    
+    "key":
+    {
+        "D":
+        {
+            "item": "off:dirt"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:rock",
+        "count": 2
+    }
+}

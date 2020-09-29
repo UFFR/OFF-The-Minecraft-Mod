@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "SSS",
+        "SSS",
+        "SSS"
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "item": "off:sugar"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:block_sugar",
+        "count": 1
+    }
+}

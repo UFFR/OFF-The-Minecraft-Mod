@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "NN",
+        "NN"
+    ],
+    
+    "key":
+    {
+        "N":
+        {
+            "item": "off:fragment_poor_metal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:poor_metal",
+        "count": 1
+    }
+}

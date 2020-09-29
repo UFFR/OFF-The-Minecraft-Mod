@@ -1,0 +1,16 @@
+[
+{
+  "modid": "off",
+  "name": "OFF The Minecraft Mod",
+  "description": "Mod that brings the world, creatures, items, and theme from the obscure yet popular French/Belgian RPG classic: 'OFF' by Mortis Ghost and Unproductive FunTime.",
+  "version": "0.0.0.1a",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["UFFR"],
+  "credits": "",
+  "logoFile": "off.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

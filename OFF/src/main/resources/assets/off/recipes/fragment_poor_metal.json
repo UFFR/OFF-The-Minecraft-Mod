@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:poor_metal"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:fragment_poor_metal",
+        "count": 4
+    }
+}

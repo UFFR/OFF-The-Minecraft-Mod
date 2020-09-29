@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "C",
+        "G",
+        "G"
+    ],
+    
+    "key":
+    {
+        "G":
+        {
+        	"type": "forge:ore_dict",
+            "ore": "paneGlass"
+        },
+        "C":
+        {
+        	"item": "off:fragment_poor_metal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:bottle_sealed",
+        "count": 4
+    }
+}

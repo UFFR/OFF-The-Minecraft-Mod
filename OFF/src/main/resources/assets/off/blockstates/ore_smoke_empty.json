@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "off:ore_smoke_empty" }
+    }
+}

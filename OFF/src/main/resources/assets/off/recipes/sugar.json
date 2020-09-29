@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:block_sugar"
+    }
+ 
+    ],
+ 
+    "result": 
+    {
+        "item": "off:sugar",
+        "count": 9
+    }
+}

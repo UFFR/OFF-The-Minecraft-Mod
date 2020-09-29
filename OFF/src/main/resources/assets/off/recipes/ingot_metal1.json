@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:block_metal"
+    }
+ 
+    ],
+ 
+    "result": 
+    {
+        "item": "off:ingot_metal",
+        "count": 9
+    }
+}

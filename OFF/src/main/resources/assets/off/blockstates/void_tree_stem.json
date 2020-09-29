@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "normal": {
+      "model": "off:voidtreestem"
+    },
+    "facing=south": {
+      "model": "off:voidtreestem"
+    },
+    "facing=north": {
+      "model": "off:voidtreestem"
+    },
+    "facing=east": {
+      "model": "off:voidtreestem",
+      "x": 90
+    },
+    "facing=west": {
+      "model": "off:voidtreestem",
+      "x": 90
+    },
+    "facing=up": {
+      "model": "off:voidtreestem",
+      "x": 90,
+      "y": 90
+    },
+    "facing=down": {
+      "model": "off:voidtreestem",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

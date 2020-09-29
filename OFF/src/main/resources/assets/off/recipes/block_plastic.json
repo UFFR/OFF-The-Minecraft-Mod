@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "PPP",
+        "PPP",
+        "PPP"
+    ],
+    
+    "key":
+    {
+        "P":
+        {
+            "item": "off:ingot_plastic"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:block_plastic",
+        "count": 1
+    }
+}

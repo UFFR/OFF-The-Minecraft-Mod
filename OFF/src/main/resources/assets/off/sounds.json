@@ -1,0 +1,30 @@
+{
+	"01_global": {
+		"category": "neutral",
+		"sounds": [{
+			"name": "01_global",
+			"stream": true
+		}]
+	},
+	"02_silencio": {
+		"category": "ambient",
+		"sounds": [{
+			"name": "02_silencio",
+			"stream": true
+		}]
+	},
+	"03_fourteen_residents": {
+		"category": "record",
+		"sounds": [{
+			"name": "03_fourteen_residents",
+			"stream": true
+		}]
+	},
+	"04_pepper_steak": {
+		"category": "record",
+		"sounds": [{
+			"name": "04_pepper_steak",
+			"stream": true
+		}]
+	}
+}

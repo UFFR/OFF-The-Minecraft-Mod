@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "WWW",
+        "SMS",
+        "SRS"
+    ],
+    
+    "key":
+    {
+        "R":
+        {
+            "item": "minecraft:redstone"
+        },
+        "W":
+        {
+        	"ore": "plankWood"
+        },
+        "S":
+        {
+        	"item": "off:rock"
+        },
+        "M":
+        {
+        	"item": "off:ingot_metal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "minecraft:piston",
+        "count": 1
+    }
+}

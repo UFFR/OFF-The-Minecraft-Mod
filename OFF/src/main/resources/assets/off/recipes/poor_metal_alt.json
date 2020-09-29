@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:dirt"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:poor_metal",
+        "count": 4
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " M ",
+        "MBM",
+        " M "
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "off:ingot_metal"
+        },
+        "B":
+        {
+        	"item": "off:bricks"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:bricks_metal",
+        "count": 2
+    }
+}

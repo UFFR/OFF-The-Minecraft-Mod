@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:block_plastic"
+    }
+ 
+    ],
+ 
+    "result": 
+    {
+        "item": "off:ingot_plastic",
+        "count": 9
+    }
+}
