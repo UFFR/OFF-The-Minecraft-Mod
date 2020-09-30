@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Random;
 
 import com.off.MainInit;
+import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.util.IHasModel;
 import com.off.util.ItemLore;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -28,15 +28,14 @@ public class ItemBase extends Item implements IHasModel
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		if (this != ModItems.LOGO)
-		{
-			setCreativeTab(CreativeTabs.MATERIALS);
-		}
-		else
+		if (this == ModItems.LOGO)
 		{
 			setCreativeTab(null);
 		}
-		
+		else
+		{
+			setCreativeTab(MainInit.tabOFFItems);
+		}
 		ModItems.ITEMS.add(this);
 	}
 	
@@ -47,9 +46,13 @@ public class ItemBase extends Item implements IHasModel
 		{
 			return EnumRarity.UNCOMMON;
 		}
-		if (this == ModItems.FLESH_ELSEN || this == ModItems.FLESH_ELSEN_BURNED || this == ModItems.SUGAR)
+		if (this == ModItems.FLESH_ELSEN || this == ModItems.FLESH_ELSEN_BURNED || this == ModItems.SUGAR || this == Item.getItemFromBlock(ModBlocks.BLOCK_SUGAR))
 		{
 			return EnumRarity.RARE;
+		}
+		if (this == Item.getItemFromBlock(ModBlocks.VOID_TREE_LEAVES) || this == Item.getItemFromBlock(ModBlocks.VOID_TREE_STEM))
+		{
+			return EnumRarity.EPIC;
 		}
 		return EnumRarity.COMMON;
 	}
@@ -175,7 +178,7 @@ public class ItemBase extends Item implements IHasModel
 	{
 		MainInit.proxy.registerItemRenderer(this, 0, "inventory");
 	}
-
+	
 	@Override
 	public boolean isOpaqueCube()
 	{

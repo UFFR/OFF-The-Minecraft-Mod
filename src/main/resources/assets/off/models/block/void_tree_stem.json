@@ -1,11 +1,7 @@
 {
-  "parent": "block/cube",
+  "parent": "block/cube_column",
   "textures": {
-    "down": "off:blocks/void_tree_top",
-    "up": "off:blocks/void_tree_top",
-    "north": "off:blocks/void_tree_side",
-    "east": "off:blocks/void_tree_side",
-    "south": "off:blocks/void_tree_side",
-    "west": "off:blocks/void_tree_side",
+	"end": "off:blocks/void_tree_top",
+	"side": "off:blocks/void_tree_side"
   }
 }

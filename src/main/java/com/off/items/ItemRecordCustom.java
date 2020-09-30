@@ -13,7 +13,6 @@ import net.minecraft.block.BlockJukebox;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -41,7 +40,7 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 		super(itemName, soundIn);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
-		this.setCreativeTab(CreativeTabs.MISC);
+		this.setCreativeTab(MainInit.tabOFFMusic);
 		recordName = itemName;
 		modRecords.put(itemName, this);
 		
@@ -123,7 +122,7 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 			return false;
 		}
 	}
-	
+		
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack)

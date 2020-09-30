@@ -13,7 +13,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -35,7 +34,7 @@ public class BlockSpecial extends Block implements IHasModel
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(sound);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		setCreativeTab(MainInit.tabOFFBlocks);
 		setHardness(hardness);
 		setResistance(resistance);
 		setHarvestLevel(tooltype, harvestlevel);

@@ -7,9 +7,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ModBlockTab extends CreativeTabs {
+public class OFFBlockTab extends CreativeTabs {
 
-	public ModBlockTab(int index, String label) {
+	public OFFBlockTab(int index, String label) {
 		super(index, label);
 		// TODO Auto-generated constructor stub
 	}

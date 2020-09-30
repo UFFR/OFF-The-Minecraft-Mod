@@ -1,2 +1,15 @@
-/.gradle/
-/build/
+.gradle/
+
+build/
+
+run/
+
+bin/
+
+.settings/
+
+.classpath
+
+runClient.launch
+
+runServer.launch

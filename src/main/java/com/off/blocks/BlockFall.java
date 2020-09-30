@@ -12,7 +12,6 @@ import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -32,7 +31,7 @@ public class BlockFall extends BlockFalling implements IHasModel
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		setCreativeTab(MainInit.tabOFFBlocks);
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 		switch(soundType)
@@ -66,10 +65,6 @@ public class BlockFall extends BlockFalling implements IHasModel
 	@Override
 	public EnumRarity getRarity(ItemStack stack)
 	{
-		if (this == ModBlocks.BLOCK_SUGAR)
-		{
-			return EnumRarity.RARE;
-		}
 		return EnumRarity.COMMON;
 	}
 
