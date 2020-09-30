@@ -42,6 +42,7 @@ public class ItemLore extends Item
 				"From a mysterious tree that lives in the Nothingness",
 				"It has been depleted of smoke, it's like a brittle sponge",
 				"I guess all we can do now is cremate it",
-				"Air-tight bottle"
+				"Air-tight bottle",
+				"Compressed low quality metal"
 		};
 }

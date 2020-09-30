@@ -7,6 +7,5 @@
     "east": "off:blocks/void_tree_side",
     "south": "off:blocks/void_tree_side",
     "west": "off:blocks/void_tree_side",
-    "particle": "off:blocks/void_tree_top"
   }
 }
