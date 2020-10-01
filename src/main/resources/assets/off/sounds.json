@@ -10,21 +10,21 @@
 		"category": "ambient",
 		"sounds": [{
 			"name": "02_silencio",
-			"stream": true
+			"stream": false
 		}]
 	},
 	"03_fourteen_residents": {
 		"category": "record",
 		"sounds": [{
 			"name": "03_fourteen_residents",
-			"stream": true
+			"stream": false
 		}]
 	},
 	"04_pepper_steak": {
 		"category": "record",
 		"sounds": [{
 			"name": "04_pepper_steak",
-			"stream": true
+			"stream": false
 		}]
 	}
 }
