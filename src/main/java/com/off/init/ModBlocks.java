@@ -47,6 +47,12 @@ public class ModBlocks
 	// Building blocks
 	public static final Block BRICKS = new BlockBase("bricks", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel);
 	
+	// Trading crates
+	public static final Block CRATE_SMOKE = new BlockBase("crate_smoke", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
+	public static final Block CRATE_METAL = new BlockBase("crate_metal", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
+	public static final Block CRATE_PLASTIC = new BlockBase("crate_plastic", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
+	public static final Block CRATE_MEAT = new BlockBase("crate_meat", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
+	
 	// Oooo spooky blocks
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0, true);
 	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 1, false);
