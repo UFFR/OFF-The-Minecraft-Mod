@@ -171,6 +171,10 @@ public class ItemBase extends Item implements IHasModel
 		{
 			tooltip.add(ItemLore.loreAll[27]);
 		}
+		if (this == ModItems.CROWBAR)
+		{
+			tooltip.add(ItemLore.loreAll[29]);
+		}
 	}
 	
 	@Override
@@ -199,4 +203,10 @@ public class ItemBase extends Item implements IHasModel
 		return null;
 	}
 
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing facing, float hitx, float hity, float hitz) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

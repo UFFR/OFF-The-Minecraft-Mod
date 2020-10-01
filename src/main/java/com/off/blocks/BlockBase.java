@@ -102,5 +102,4 @@ public class BlockBase extends Block implements IHasModel
 		// TODO Auto-generated method stub
 		return EnumRarity.COMMON;
 	}
-
 }

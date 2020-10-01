@@ -13,6 +13,11 @@ tile.void_tree_stem.name=Void Tree Log
 tile.void_tree_leaves.name=Void Tree Leaves
 tile.nothing.name=Nothing
 
+tile.crate_metal.name=Crate of Metal
+tile.crate_meat.name=Crate of Meat
+tile.crate_smoke.name=Crate of Smoke
+tile.crate_plastic.name=Crate of Plastic
+
 item.bottle_smoke.name=Bottle of Smoke
 item.ingot_metal.name=Metal Ingot
 item.nugget_metal.name=Metal Nugget
@@ -37,6 +42,7 @@ item.bottle_large.name=Large Bottle
 item.flesh_elsen.name=Elsen Flesh
 item.flesh_elsen_burned.name=Charred Elsen Flesh
 item.bottle_sealed.name=Sealed Bottle
+item.crowbar.name=Crate Opener
 
 item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
 item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents

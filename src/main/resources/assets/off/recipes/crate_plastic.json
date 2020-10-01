@@ -1,0 +1,50 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "minecraft:chest"
+    },
+ 
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    },
+    
+    {
+      "item": "off:ingot_plastic"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:crate_plastic",
+        "count": 1
+    }
+}
