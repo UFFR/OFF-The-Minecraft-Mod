@@ -9,7 +9,7 @@ tile.ore_smoke_empty.name=Depleted Smoke Deposit
 tile.heat_shielding.name=Industrial Furnace Heat Shielding
 tile.bricks.name=Bricks
 tile.bricks_metal.name=Metallic Bricks
-tile.void_tree_stem.name=Void Tree Stem
+tile.void_tree_stem.name=Void Tree Log
 tile.void_tree_leaves.name=Void Tree Leaves
 tile.nothing.name=Nothing
 
@@ -42,9 +42,10 @@ item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
 item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents
 item.record.Pepper Steak.desc=Alias Conrad Coldwood - Pepper Steak
 
-tabGroup.tabOFFItems.name=OFF Items
-tabGroup.tabOFFBlocks.name=OFF Blocks
-tabGroup.tabOFFTools.name=OFF Tools
+tabGroup.tabOFFItems=OFF Items
+tabGroup.tabOFFBlocks=OFF Blocks
+tabGroup.tabOFFTools=OFF Tools
+tabGroup.tabOFFMusic=OFF Music
 
 fluid.plastic=Plastic
 fluid.smoke=Smoke

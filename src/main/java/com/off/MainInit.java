@@ -2,12 +2,17 @@ package com.off;
 
 import org.apache.logging.log4j.Logger;
 
+import com.off.init.ModBlocks;
+import com.off.init.ModItems;
 import com.off.init.SmeltingRecipes;
 import com.off.init.SoundRegistry;
 import com.off.proxy.CommonProxy;
 import com.off.util.Reference;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -27,6 +32,34 @@ public class MainInit
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
 
+    // Creative tabs
+    public final static CreativeTabs tabOFFItems = (new CreativeTabs("tabOFFItems")
+    {
+    	@Override
+    	public ItemStack getTabIconItem()
+    	{
+    		return new ItemStack(ModItems.LOGO);
+    	}
+    });
+    
+    public final static CreativeTabs tabOFFBlocks = (new CreativeTabs("tabOFFBlocks")
+    {
+    	@Override
+    	public ItemStack getTabIconItem()
+    	{
+    		return new ItemStack(Item.getItemFromBlock(ModBlocks.ORE_METAL));
+    	}
+    });
+    
+    public final static CreativeTabs tabOFFMusic = (new CreativeTabs("tabOFFMusic")
+    {
+    	@Override
+    	public ItemStack getTabIconItem()
+    	{
+    		return new ItemStack(ModItems.DISC_PEPPER_STEAK);
+    	}
+    });
+    
     @EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
@@ -43,7 +76,6 @@ public class MainInit
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         System.out.println(Reference.MODID + ":init");
         SmeltingRecipes.init();
-        //CreativeTabs modItemTab = ModItemTab(CreativeTabs.getNextID(), "tabOFFItems");
     }
     
 	@EventHandler

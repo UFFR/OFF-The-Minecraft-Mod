@@ -24,7 +24,7 @@ public final class SoundRegistry
 		global = register("01_global");
 		
 		// Discs
-		silencio = register("02_silencio");
+		silencio = registerBypass("02_silencio");
 		fourteenResidents = registerBypass("03_fourteen_residents");
 		pepperSteak = registerBypass("04_pepper_steak");
 	}

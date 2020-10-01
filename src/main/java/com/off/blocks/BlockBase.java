@@ -12,7 +12,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -31,7 +30,7 @@ public class BlockBase extends Block implements IHasModel
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		setCreativeTab(MainInit.tabOFFBlocks);
 		setSoundType(sound);
 		setHardness(hardness);
 		setResistance(resistance);
@@ -78,6 +77,10 @@ public class BlockBase extends Block implements IHasModel
 			tooltip.add(ItemLore.elementLore[1]);
 			tooltip.add(ItemLore.loreAll[6]);
 		}
+		if (this == ModBlocks.ROCK)
+		{
+			tooltip.add(ItemLore.loreAll[28]);
+		}
 	}
 
 	@Override
@@ -86,7 +89,7 @@ public class BlockBase extends Block implements IHasModel
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY) {
