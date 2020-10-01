@@ -37,6 +37,7 @@ item.bottle_large.name=Large Bottle
 item.flesh_elsen.name=Elsen Flesh
 item.flesh_elsen_burned.name=Charred Elsen Flesh
 item.bottle_sealed.name=Sealed Bottle
+item.crowbar.name=Crate Opener
 
 item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
 item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents

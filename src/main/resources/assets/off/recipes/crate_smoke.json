@@ -1,0 +1,50 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "minecraft:chest"
+    },
+ 
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    },
+    
+    {
+      "item": "off:bottle_smoke"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:crate_smoke",
+        "count": 1
+    }
+}
