@@ -105,5 +105,4 @@ public class BlockSpecial extends Block implements IHasModel
 	{
 		return EnumRarity.EPIC;
 	}
-
 }

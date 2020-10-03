@@ -29,4 +29,7 @@ public interface IHasModel
 			float hitX, float hitY);
 
 	EnumRarity getRarity(ItemStack stack);
+
+	boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player,
+			EnumHand hand, EnumFacing facing, float hitx, float hity, float hitz);
 }

@@ -1,0 +1,50 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "minecraft:chest"
+    },
+ 
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    },
+    
+    {
+      "item": "off:meat"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:crate_meat",
+        "count": 1
+    }
+}

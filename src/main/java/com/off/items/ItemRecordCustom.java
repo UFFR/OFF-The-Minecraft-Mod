@@ -147,4 +147,11 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing facing, float hitx, float hity, float hitz) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

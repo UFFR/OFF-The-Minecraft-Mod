@@ -45,11 +45,11 @@ public class BlockOre extends Block implements IHasModel
 	{
 		if (this == ModBlocks.ORE_SMOKE)
 		{
-			return 6 + rand.nextInt(18);
+			return 3 + rand.nextInt(12);
 		}
 		if (this == ModBlocks.ORE_SMOKE_EMPTY)
 		{
-			return 10 + rand.nextInt(30);
+			return 7 + rand.nextInt(21);
 		}
 		return 1;
 	}
@@ -59,7 +59,12 @@ public class BlockOre extends Block implements IHasModel
 	{
 		if (this == ModBlocks.ORE_SMOKE || this == ModBlocks.ORE_SMOKE_EMPTY)
 		{
-			return ModItems.FRAGMENT_POOR_METAL;
+			switch(rand.nextInt(2))
+			{
+				case 0: return ModItems.FRAGMENT_POOR_METAL;
+				case 1: return ModItems.POOR_METAL;
+				default: return ModItems.POOR_METAL;
+			}
 		}
 		else
 		{
@@ -117,5 +122,4 @@ public class BlockOre extends Block implements IHasModel
 		// TODO Auto-generated method stub
 		return EnumRarity.COMMON;
 	}
-
 }

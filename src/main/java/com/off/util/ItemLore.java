@@ -43,6 +43,7 @@ public class ItemLore extends Item
 				"It has been depleted of smoke, it's like a brittle sponge",
 				"I guess all we can do now is cremate it",
 				"Air-tight bottle",
-				"Compressed low quality metal"
+				"Compressed low quality metal",
+				"Can be used for Half-Life roleplaying"
 		};
 }
