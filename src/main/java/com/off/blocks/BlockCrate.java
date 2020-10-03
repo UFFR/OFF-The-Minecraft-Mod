@@ -2,6 +2,7 @@ package com.off.blocks;
 
 import java.util.List;
 
+import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.util.IHasModel;
@@ -45,28 +46,31 @@ public class BlockCrate extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitx, float hity, float hitz)
 	{
-		if (player.getHeldItemMainhand().getItem().equals(ModItems.CROWBAR))
+		if (!worldIn.isRemote)
 		{
-			worldIn.setBlockToAir(pos);
-			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.CHEST))));
-			ItemStack loot = null;
-			if (this == ModBlocks.CRATE_MEAT)
+			if (player.getHeldItemMainhand().getItem().equals(ModItems.CROWBAR))
 			{
-				loot = new ItemStack(ModItems.MEAT);
+				worldIn.setBlockToAir(pos);
+				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.CHEST))));
+				ItemStack loot = null;
+				if (this == ModBlocks.CRATE_MEAT)
+				{
+					loot = new ItemStack(ModItems.MEAT, 8);
+				}
+				if (this == ModBlocks.CRATE_METAL)
+				{
+					loot = new ItemStack(ModItems.INGOT_METAL, 8);
+				}
+				if (this == ModBlocks.CRATE_PLASTIC)
+				{
+					loot = new ItemStack(ModItems.INGOT_PLASTIC, 8);
+				}
+				if (this == ModBlocks.CRATE_SMOKE)
+				{
+					loot = new ItemStack(ModItems.BOTTLE_SMOKE, 8);
+				}
+				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), loot));
 			}
-			if (this == ModBlocks.CRATE_METAL)
-			{
-				loot = new ItemStack(ModItems.INGOT_METAL);
-			}
-			if (this == ModBlocks.CRATE_PLASTIC)
-			{
-				loot = new ItemStack(ModItems.INGOT_PLASTIC);
-			}
-			if (this == ModBlocks.CRATE_SMOKE)
-			{
-				loot = new ItemStack(ModItems.BOTTLE_SMOKE);
-			}
-			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), loot));
 			return true;
 		}
 		else
@@ -74,6 +78,7 @@ public class BlockCrate extends Block implements IHasModel
 			if (worldIn.isRemote)
 			{
 				player.sendMessage(new TextComponentTranslation("You're going to need a crate opener for that..."));
+				return false;
 			}
 		}
 		return true;
@@ -86,15 +91,15 @@ public class BlockCrate extends Block implements IHasModel
 	}
 	
 	@Override
-	public void registerModels() {
-		// TODO Auto-generated method stub
-		
+	public void registerModels()
+	{
+		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 
 	@Override
 	public boolean isOpaqueCube() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
