@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.off.blocks.BlockBase;
+import com.off.blocks.BlockCrate;
 import com.off.blocks.BlockFall;
 import com.off.blocks.BlockOre;
 import com.off.blocks.BlockSpecial;
@@ -48,10 +49,10 @@ public class ModBlocks
 	public static final Block BRICKS = new BlockBase("bricks", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel);
 	
 	// Trading crates
-	public static final Block CRATE_SMOKE = new BlockBase("crate_smoke", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
-	public static final Block CRATE_METAL = new BlockBase("crate_metal", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
-	public static final Block CRATE_PLASTIC = new BlockBase("crate_plastic", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
-	public static final Block CRATE_MEAT = new BlockBase("crate_meat", Material.WOOD, SoundType.WOOD, defaultHardness, defaultResistance, "axe", 0);
+	public static final Block CRATE_SMOKE = new BlockCrate("crate_smoke", Material.WOOD);
+	public static final Block CRATE_METAL = new BlockCrate("crate_metal", Material.WOOD);
+	public static final Block CRATE_PLASTIC = new BlockCrate("crate_plastic", Material.WOOD);
+	public static final Block CRATE_MEAT = new BlockCrate("crate_meat", Material.WOOD);
 	
 	// Oooo spooky blocks
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0, true);
