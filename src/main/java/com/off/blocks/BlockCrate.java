@@ -46,7 +46,7 @@ public class BlockCrate extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitx, float hity, float hitz)
 	{
-		if (!worldIn.isRemote)
+		if (player.getHeldItemMainhand().getItem().equals(ModItems.CROWBAR))
 		{
 			if (!worldIn.isRemote)
 			{
