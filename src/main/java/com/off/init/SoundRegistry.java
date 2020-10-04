@@ -21,12 +21,12 @@ public final class SoundRegistry
 	public static void init()
 	{
 		// Regular
-		global = register("01_global");
+		global = register(":01_global");
 		
 		// Discs
-		silencio = registerBypass("02_silencio");
-		fourteenResidents = registerBypass("03_fourteen_residents");
-		pepperSteak = registerBypass("04_pepper_steak");
+		silencio = registerBypass(":02_silencio");
+		fourteenResidents = registerBypass(":03_fourteen_residents");
+		pepperSteak = registerBypass(":04_pepper_steak");
 	}
 	
 	public static SoundEvent register(String name)

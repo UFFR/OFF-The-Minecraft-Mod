@@ -13,7 +13,7 @@
         "G":
         {
         	"type": "forge:ore_dict",
-            "ore": "paneGlass"
+            "ore": "blockGlass"
         },
         "C":
         {

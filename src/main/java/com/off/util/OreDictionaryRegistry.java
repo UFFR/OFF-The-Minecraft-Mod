@@ -29,5 +29,13 @@ public class OreDictionaryRegistry
 		OreDictionary.registerOre("blockMetal", ModBlocks.BLOCK_METAL);
 		OreDictionary.registerOre("blockPlastic", ModBlocks.BLOCK_PLASTIC);
 		OreDictionary.registerOre("blockSugar", ModBlocks.BLOCK_SUGAR);
+		
+		// Records
+		OreDictionary.registerOre("record", ModItems.DISC_SILENCIO);
+		OreDictionary.registerOre("record", ModItems.DISC_FOURTEEN_RESIDENTS);
+		OreDictionary.registerOre("record", ModItems.DISC_PEPPER_STEAK);
+		
+		// Misc
+		OreDictionary.registerOre("cobblestone", ModBlocks.ROCK);
 	}
 }

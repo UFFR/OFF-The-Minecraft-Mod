@@ -58,6 +58,8 @@ public class ModBlocks
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true);
 	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 1F, false);
 	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 1F, false);
+	public static final Block CUBE_RED = new BlockSpecial("cube_red", Material.BARRIER, SoundType.METAL, 30.0F, 1000.0F, "pickaxe", 0, 255, 1F, false);
+	public static final Block CUBE_YELLOW = new BlockSpecial("cube_yellow", Material.BARRIER, SoundType.METAL, 30.0F, 1000.0F, "pickaxe", 0, 255, 1F, false);
 	
 	/* Industrial Furnace */
 	// Exclusive

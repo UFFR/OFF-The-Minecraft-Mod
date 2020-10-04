@@ -1,0 +1,34 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:ore_smoke"
+    },
+ 
+    {
+      "item": "off:bottle_sealed"
+    },
+    
+    {
+      "item": "off:bottle_sealed"
+    },
+    
+    {
+      "item": "off:bottle_sealed"
+    },
+    
+    {
+      "item": "off:bottle_sealed"
+    }
+    
+    ],
+ 
+    "result": 
+    {
+        "item": "off:bottle_smoke",
+        "count": 4
+    }
+}

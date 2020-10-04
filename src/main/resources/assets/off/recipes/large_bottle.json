@@ -18,7 +18,7 @@
         "P":
         {
         	"type": "forge:ore_dict",
-        	"ore": "blockGlass"
+        	"ore": "paneGlass"
         }
     },
     
