@@ -7,6 +7,7 @@ import com.off.init.ModItems;
 import com.off.init.SmeltingRecipes;
 import com.off.init.SoundRegistry;
 import com.off.proxy.CommonProxy;
+import com.off.util.OreDictionaryRegistry;
 import com.off.util.Reference;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -76,6 +77,7 @@ public class MainInit
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         System.out.println(Reference.MODID + ":init");
         SmeltingRecipes.init();
+        OreDictionaryRegistry.registry();
     }
     
 	@EventHandler
