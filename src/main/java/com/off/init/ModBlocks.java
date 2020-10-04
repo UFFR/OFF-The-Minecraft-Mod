@@ -55,9 +55,9 @@ public class ModBlocks
 	public static final Block CRATE_MEAT = new BlockCrate("crate_meat", Material.WOOD);
 	
 	// Oooo spooky blocks
-	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0, true);
-	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 1, false);
-	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 1, false);
+	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true);
+	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 1F, false);
+	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 1F, false);
 	
 	/* Industrial Furnace */
 	// Exclusive

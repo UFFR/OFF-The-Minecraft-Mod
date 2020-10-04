@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 public class BlockSpecial extends Block implements IHasModel
 {
 
-	public BlockSpecial(String name, Material material, SoundType sound, Float hardness, Float resistance, String tooltype, Integer harvestlevel, Integer opacity, Integer luminence, Boolean unbreakable)
+	public BlockSpecial(String name, Material material, SoundType sound, Float hardness, Float resistance, String tooltype, Integer harvestlevel, Integer opacity, Float luminence, Boolean unbreakable)
 	{
 		super(material);
 		setUnlocalizedName(name);
@@ -72,8 +72,6 @@ public class BlockSpecial extends Block implements IHasModel
 			return true;
 		}
 	}
-
-
 
 	@Override
 	public void registerModels()

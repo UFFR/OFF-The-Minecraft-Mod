@@ -4,5 +4,4 @@
   	"axis=z": { "model": "off:void_tree_stem", "x": 90},
   	"axis=x": { "model": "off:void_tree_stem", "x": 90, "y": 90}
     }
-  }
 }

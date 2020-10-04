@@ -5,10 +5,10 @@
   "description": "Mod that brings the world, creatures, items, and theme from the obscure yet popular French/Belgian RPG classic: 'OFF' by Mortis Ghost and Unproductive FunTime.",
   "version": "0.0.0.1a",
   "mcversion": "1.12.2",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://github.com/UFFR/OFF-The-Minecraft-Mod",
+  "updateUrl": "https://github.com/UFFR/OFF-The-Minecraft-Mod/releases",
   "authorList": ["UFFR"],
-  "credits": "",
+  "credits": "Drillgon200",
   "logoFile": "off.png",
   "screenshots": [],
   "dependencies": []

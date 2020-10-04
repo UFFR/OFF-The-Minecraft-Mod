@@ -1,5 +1,5 @@
 {
-  "parent": "off:block/voidtreestem",
+  "parent": "off:block/void_tree_stem",
   "display": {
     "thirdperson": {
       "rotation": [
