@@ -61,5 +61,14 @@ public class ModItems
 	public static final Item DISC_SILENCIO = new ItemRecordCustom("disc_silencio", SoundRegistry.silencio, "Silencio");
 	public static final Item DISC_FOURTEEN_RESIDENTS = new ItemRecordCustom("disc_fourteen_residents", SoundRegistry.fourteenResidents, "Fourteen Residents");
 	public static final Item DISC_PEPPER_STEAK = new ItemRecordCustom("disc_pepper_steak", SoundRegistry.pepperSteak, "Pepper Steak");
+	public static final Item DISC_NOT_SAFE = new ItemRecordCustom("disc_not_safe", SoundRegistry.notSafe, "Not Safe");
+	public static final Item DISC_STAY_IN_YOUR_COMA = new ItemRecordCustom("disc_stay_in_your_coma", SoundRegistry.stayInYourComa, "Stay In Your Coma");
+	public static final Item DISC_EMPTY_WAREHOUSE = new ItemRecordCustom("disc_empty_warehouse", SoundRegistry.emptyWarehouse, "Empty Warehouse");
+	public static final Item DISC_TENDER_SUGAR = new ItemRecordCustom("disc_tender_sugar", SoundRegistry.tenderSugar, "Tender Sugar");
+	public static final Item DISC_RAINY_DAY = new ItemRecordCustom("disc_rainy_day", SoundRegistry.rainyDay, "Rainy Day");
+	public static final Item DISC_SOFT_BREEZE = new ItemRecordCustom("disc_soft_breeze", SoundRegistry.softBreeze, "Soft Breeze");
+	public static final Item DISC_CLOCKWORK = new ItemRecordCustom("disc_clockwork", SoundRegistry.clockwork, "Clockwork");
+	public static final Item DISC_FLESH_MAZE_TANGO = new ItemRecordCustom("disc_flesh_maze_tango", SoundRegistry.fleshMazeTango, "Flesh Maze Tango");
+	public static final Item DISC_FAKE_ORCHESTRA = new ItemRecordCustom("disc_fake_orchestra", SoundRegistry.fakeOrchestra, "Fake Orchestra");
 	
 }

@@ -56,14 +56,17 @@ public class ModBlocks
 	
 	// Oooo spooky blocks
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true);
-	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 1F, false);
-	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 1F, false);
+	public static final Block VOID_TREE_STEM = new BlockSpecial("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4, 0, 0.5F, false);
+	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 0.75F, false);
+	public static final Block VOID_TREE_PLANKS = new BlockSpecial("void_tree_planks", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 0, 0, 0.75F, false);
 	public static final Block CUBE_RED = new BlockSpecial("cube_red", Material.BARRIER, SoundType.METAL, 30.0F, 1000.0F, "pickaxe", 0, 255, 1F, false);
 	public static final Block CUBE_YELLOW = new BlockSpecial("cube_yellow", Material.BARRIER, SoundType.METAL, 30.0F, 1000.0F, "pickaxe", 0, 255, 1F, false);
 	
 	/* Industrial Furnace */
 	// Exclusive
 	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
+	public static final Block FURNACE_CORE = new BlockBase("furnace_core", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
+	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
 
 	// Non-exclusive
 	public static final Block BRICKS_METAL = new BlockBase("bricks_metal", Material.IRON, SoundType.METAL, 4.0F, 18.0F, defaultToolType, 2);

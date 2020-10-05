@@ -44,6 +44,8 @@ public class ItemLore extends Item
 				"I guess all we can do now is cremate it",
 				"Air-tight bottle",
 				"Compressed low quality metal",
-				"Can be used for Half-Life roleplaying"
+				"Can be used for Half-Life roleplaying",
+				"A curious brightly colored cube...",
+				"Its bright colors clash with the environment, going against any form of art"
 		};
 }

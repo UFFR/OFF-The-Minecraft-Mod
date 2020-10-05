@@ -59,7 +59,13 @@ public class MainInit
     	{
     		return new ItemStack(ModItems.DISC_PEPPER_STEAK);
     	}
-    });
+    	
+    	@Override
+    	public boolean hasSearchBar()
+    	{
+    		return true;
+    	}
+    }.setBackgroundImageName("item_search.png"));
     
     @EventHandler
     public static void preInit(FMLPreInitializationEvent event)

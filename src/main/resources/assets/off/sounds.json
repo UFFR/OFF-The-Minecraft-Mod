@@ -40,5 +40,54 @@
 			"name": "off:06_stay_in_your_coma",
 			"stream": false
 		}]
+	},
+	"06_empty_warehouse": {
+		"category": "ambient",
+		"sounds": [{
+			"name": "off:07_empty_warehouse",
+			"stream": true
+		}]
+	},
+	"08_tender_sugar": {
+		"category": "record",
+		"sounds": [{
+			"name": "off:08_tender_sugar",
+			"stream": false
+		}]
+	},
+	"09_rainy_day": {
+		"category": "ambient",
+		"sounds": [{
+			"name": "off:09_rainy_day",
+			"stream": true
+		}]
+	},
+	"10_soft_breeze": {
+		"category": "record",
+		"sounds": [{
+			"name": "off:10_soft_breeze",
+			"stream": false
+		}]
+	},
+	"11_clockwork": {
+		"category": "record",
+		"sounds": [{
+			"name": "off:11_clockwork",
+			"stream": false
+		}]
+	},
+	"12_flesh_maze_tango": {
+		"category": "record",
+		"sounds": [{
+			"name": "off:12_flesh_maze_tango",
+			"stream": false
+		}]
+	},
+	"13_fake_orchestra": {
+		"category": "record",
+		"sounds": [{
+			"name": "off:13_fake_orchestra",
+			"stream": false
+		}]
 	}
 }

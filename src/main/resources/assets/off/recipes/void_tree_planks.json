@@ -1,0 +1,18 @@
+{ 
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients": 
+    [
+ 
+    {
+      "item": "off:void_tree_stem"
+    }
+   
+    ],
+ 
+    "result": 
+    {
+        "item": "off:void_tree_planks",
+        "count": 4
+    }
+}

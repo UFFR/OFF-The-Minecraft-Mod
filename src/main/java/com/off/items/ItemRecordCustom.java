@@ -88,6 +88,42 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 		{
 			tooltip.add("Track #4");
 		}
+		if (this == ModItems.DISC_NOT_SAFE)
+		{
+			tooltip.add("Track #5");
+		}
+		if (this == ModItems.DISC_STAY_IN_YOUR_COMA)
+		{
+			tooltip.add("Track #6");
+		}
+		if (this == ModItems.DISC_EMPTY_WAREHOUSE)
+		{
+			tooltip.add("Track #7");
+		}
+		if (this == ModItems.DISC_TENDER_SUGAR)
+		{
+			tooltip.add("Track #8");
+		}
+		if (this == ModItems.DISC_RAINY_DAY)
+		{
+			tooltip.add("Track #9");
+		}
+		if (this == ModItems.DISC_SOFT_BREEZE)
+		{
+			tooltip.add("Track #10");
+		}
+		if (this == ModItems.DISC_CLOCKWORK)
+		{
+			tooltip.add("Track #11");
+		}
+		if (this == ModItems.DISC_FLESH_MAZE_TANGO)
+		{
+			tooltip.add("Track #12");
+		}
+		if (this == ModItems.DISC_FAKE_ORCHESTRA)
+		{
+			tooltip.add("Track #13");
+		}
 	}
 	
 	@Override
@@ -100,7 +136,7 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 	@Override
 	public EnumRarity getRarity(ItemStack stack)
 	{
-		if (this == ModItems.DISC_PEPPER_STEAK)
+		if (this == ModItems.DISC_PEPPER_STEAK || this == ModItems.DISC_FAKE_ORCHESTRA)
 		{
 			return EnumRarity.EPIC;
 		}
@@ -113,7 +149,7 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 	@Override
 	public boolean hasEffect(ItemStack stack)
 	{
-		if (this == ModItems.DISC_PEPPER_STEAK)
+		if (this == ModItems.DISC_PEPPER_STEAK || this == ModItems.DISC_FAKE_ORCHESTRA)
 		{
 			return true;
 		}

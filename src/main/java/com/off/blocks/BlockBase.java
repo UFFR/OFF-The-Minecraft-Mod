@@ -59,7 +59,7 @@ public class BlockBase extends Block implements IHasModel
 		{
 			tooltip.add(ItemLore.elementLore[2]);
 		}
-		if (this == ModBlocks.HEAT_SHIELDING)
+		if (this == ModBlocks.HEAT_SHIELDING || this == ModBlocks.FURNACE_CORE || this == ModBlocks.FURNACE_CORE_COMPONENT)
 		{
 			tooltip.add(ItemLore.loreAll[14]);
 		}

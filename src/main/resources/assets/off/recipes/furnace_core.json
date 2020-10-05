@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "MSM",
+        "SFS",
+        "MSM"
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "off:ingot_metal"
+        },
+        
+        "S":
+        {
+        	"item": "off:heat_shielding"
+        },
+        
+        "F":
+        {
+        	"item": "minecraft:furnace"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:furnace_core",
+        "count": 1
+    }
+}
