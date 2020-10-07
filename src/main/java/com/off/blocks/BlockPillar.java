@@ -10,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -36,9 +37,9 @@ public class BlockPillar extends BlockRotatedPillar implements IHasModel
 	}
 
 	@Override
-	public void registerModels() {
-		// TODO Auto-generated method stub
-		
+	public void registerModels()
+	{
+		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 
 	@Override
