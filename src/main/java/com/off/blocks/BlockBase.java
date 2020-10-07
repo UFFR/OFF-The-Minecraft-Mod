@@ -35,8 +35,6 @@ public class BlockBase extends Block implements IHasModel
 		setHardness(hardness);
 		setResistance(resistance);
 		setHarvestLevel(toolType, harvestLevel);
-		//setLightLevel(0.0F);
-		//setLightOpacity(255);
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}

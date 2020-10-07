@@ -1,0 +1,8 @@
+{
+   "parent": "block/stairs",
+   "textures": {
+       "bottom": "off:blocks/bricks_metal",
+       "top": "off:blocks/bricks_metal",
+       "side": "off:blocks/bricks_metal"
+   }
+}

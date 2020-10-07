@@ -41,7 +41,7 @@
 			"stream": false
 		}]
 	},
-	"06_empty_warehouse": {
+	"07_empty_warehouse": {
 		"category": "ambient",
 		"sounds": [{
 			"name": "off:07_empty_warehouse",

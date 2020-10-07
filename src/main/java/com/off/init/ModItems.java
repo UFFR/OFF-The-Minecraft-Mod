@@ -52,7 +52,7 @@ public class ModItems
 	
 	/* Miscellaneous */
 	// Misc items
-	public static final Item LOGO = new ItemBase("logo");
+	public static final Item LOGO = new ItemBase("logo").setCreativeTab(null);
 	public static final Item BOTTLE_LARGE = new ItemBase("bottle_large");
 	public static final Item BOTTLE_SEALED = new ItemBase("bottle_sealed");
 	public static final Item CROWBAR = new ItemBase("crowbar");

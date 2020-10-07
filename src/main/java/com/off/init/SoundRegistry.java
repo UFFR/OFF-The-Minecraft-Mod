@@ -37,12 +37,14 @@ public final class SoundRegistry
 		notSafe = register("05_not_safe");
 		rainyDay = register("09_rainy_day");
 		softBreeze = register("10_soft_breeze");
+		emptyWarehouse = register("07_empty_warehouse");
 		
 		// Discs
 		silencio = registerBypass("02_silencio");
 		fourteenResidents = registerBypass("03_fourteen_residents");
 		pepperSteak = registerBypass("04_pepper_steak");
 		stayInYourComa = registerBypass("06_stay_in_your_coma");
+		tenderSugar = registerBypass("08_tender_sugar");
 		clockwork = registerBypass("11_clockwork");
 		fleshMazeTango = registerBypass("12_flesh_maze_tango");
 		fakeOrchestra = registerBypass("13_fake_orchestra");

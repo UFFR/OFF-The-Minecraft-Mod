@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "M  ",
+        "MM ",
+        "MMM"
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "off:ingot_metal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:stairs_metal",
+        "count": 1
+    }
+}
