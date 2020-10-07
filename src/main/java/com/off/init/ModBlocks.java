@@ -21,7 +21,7 @@ public class ModBlocks
 	/*
 	BlockBase: Extremely basic block
 	BlockOre: Block that drops something other than itself, doesn't have to be an ore
-	blockFall: Self-explanatory
+	BlockFall: Self-explanatory
 	BlockSpecial: Block with special properties and may be considered rare
 	BlockCrate: Block that when right clicked with a crowbar, drops all its items
 	BlockPillar: Pillar-like rotations such as logs or, well, pillars
