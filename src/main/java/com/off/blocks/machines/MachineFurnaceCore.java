@@ -7,6 +7,7 @@ import com.off.util.IHasModel;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -37,6 +38,12 @@ public class MachineFurnaceCore extends BlockContainer implements IHasModel
 		return null;
 	}
 
+	@Override
+	public boolean hasTileEntity(IBlockState state)
+	{
+		return true;
+	}
+	
 	@Override
 	public void registerModels()
 	{

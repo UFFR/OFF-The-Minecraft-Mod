@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.off.blocks.BlockBase;
 import com.off.blocks.BlockCrate;
+import com.off.blocks.BlockHatch;
 import com.off.blocks.BlockFall;
 import com.off.blocks.BlockOre;
 import com.off.blocks.BlockPillar;
@@ -22,7 +23,7 @@ public class ModBlocks
 	BlockBase: Extremely basic block
 	BlockOre: Block that drops something other than itself, doesn't have to be an ore
 	BlockFall: Self-explanatory
-	BlockSpecial: Block with special properties and may be considered rare
+	BlockSpecial: Block with special properties and may be considered "rare"
 	BlockCrate: Block that when right clicked with a crowbar, drops all its items
 	BlockPillar: Pillar-like rotations such as logs or, well, pillars
 	BlockStair: Self-explanatory
@@ -59,7 +60,7 @@ public class ModBlocks
 	public static final Block CRATE_PLASTIC = new BlockCrate("crate_plastic", Material.WOOD);
 	public static final Block CRATE_MEAT = new BlockCrate("crate_meat", Material.WOOD);
 	
-	// Oooo spooky blocks
+	// Oooo spooky blocks (they're actually just special blocks for one reason or another)
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true);
 	public static final Block VOID_TREE_STEM = new BlockPillar("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4);
 	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 0.75F, false);
@@ -72,6 +73,7 @@ public class ModBlocks
 	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
 	public static final Block FURNACE_CORE = new BlockBase("furnace_core", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
 	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel);
+	public static final Block FURNACE_ACCESS = new BlockHatch("furnace_access");
 
 	// Non-exclusive
 	public static final Block BRICKS_METAL = new BlockBase("bricks_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2);

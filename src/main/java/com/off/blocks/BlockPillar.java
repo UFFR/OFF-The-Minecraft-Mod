@@ -1,13 +1,17 @@
 package com.off.blocks;
 
+import java.util.List;
+
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.util.IHasModel;
+import com.off.util.ItemLore;
 
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -36,6 +40,15 @@ public class BlockPillar extends BlockRotatedPillar implements IHasModel
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 
+	@Override
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
+	{
+		if (this == ModBlocks.VOID_TREE_STEM)
+		{
+			tooltip.add(ItemLore.loreAll[24]);
+		}
+	}
+	
 	@Override
 	public void registerModels()
 	{

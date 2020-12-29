@@ -10,21 +10,21 @@
 		"category": "ambient",
 		"sounds": [{
 			"name": "off:02_silencio",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"03_fourteen_residents": {
 		"category": "record",
 		"sounds": [{
 			"name": "off:03_fourteen_residents",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"04_pepper_steak": {
 		"category": "record",
 		"sounds": [{
 			"name": "off:04_pepper_steak",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"05_not_safe": {
@@ -38,7 +38,7 @@
 		"category": "record",
 		"sounds": [{
 			"name": "off:06_stay_in_your_coma",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"07_empty_warehouse": {
@@ -52,7 +52,7 @@
 		"category": "record",
 		"sounds": [{
 			"name": "off:08_tender_sugar",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"09_rainy_day": {
@@ -66,28 +66,28 @@
 		"category": "record",
 		"sounds": [{
 			"name": "off:10_soft_breeze",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"11_clockwork": {
 		"category": "record",
 		"sounds": [{
 			"name": "off:11_clockwork",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"12_flesh_maze_tango": {
 		"category": "record",
 		"sounds": [{
 			"name": "off:12_flesh_maze_tango",
-			"stream": false
+			"stream": true
 		}]
 	},
 	"13_fake_orchestra": {
 		"category": "record",
 		"sounds": [{
 			"name": "off:13_fake_orchestra",
-			"stream": false
+			"stream": true
 		}]
 	}
 }

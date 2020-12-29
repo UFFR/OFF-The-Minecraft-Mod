@@ -87,7 +87,7 @@ public class BlockSpecial extends Block implements IHasModel
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		if (this == ModBlocks.VOID_TREE_LEAVES || this == ModBlocks.VOID_TREE_STEM || this == ModBlocks.VOID_TREE_PLANKS)
+		if (this == ModBlocks.VOID_TREE_LEAVES || this == ModBlocks.VOID_TREE_PLANKS)
 		{
 			tooltip.add(ItemLore.loreAll[24]);
 		}

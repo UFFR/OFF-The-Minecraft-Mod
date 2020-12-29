@@ -20,8 +20,8 @@ public class ItemLore extends Item
 				"Large bottle of meat",
 				"Bottle of smoke, quite simply",
 				"Large bottle of plastic",
-				"It is of desireable quality",
-				"It is of poor quality",
+				"It is of desireable grade",
+				"It is of poor grade",
 				"Restores a moderate amount of HP",
 				"Restores a large amount of HP",
 				"Restores a moderate amount of CP",
@@ -46,6 +46,6 @@ public class ItemLore extends Item
 				"Compressed low quality metal",
 				"Can be used for Half-Life roleplaying",
 				"A curious brightly colored cube...",
-				"Its bright colors clash with the environment, going against any form of art"
+				"Its bright colors clash with the environment, going against any form of the plastic arts"
 		};
 }

@@ -14,10 +14,16 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityFurnaceCore extends TileEntity implements ITickable
 {
+	/*
+	 * Slots
+	 0 = Fuel
+	 1 = Input
+	 2 = Output
+	*/
 	public int fuel = 0;
 	public long progress = 0;
 	public boolean active = false;
-	public float heat = 20.0F;
+	public long heat = 20;
 	public float maxHeat = 1000.0F;
 	public ItemStackHandler inventory;
 	public ICapabilityProvider dropProvider;
@@ -82,6 +88,7 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
+		this.heat = compound.getLong("heatTime");
 		this.progress = compound.getShort("cookTime");
 		if (compound.hasKey("inventory"))
 		{
@@ -93,9 +100,30 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
-		compound.setShort("cookTime", (short) progress);
+		compound.setFloat("heatTime", heat);
+		compound.setInteger("cookTime", (short) progress);
 		compound.setTag("inventory", inventory.serializeNBT());
 		return super.writeToNBT(compound);
+	}
+	
+	public boolean hasHeat()
+	{
+		return heat >= 200;
+	}
+	
+	public boolean isProcessing()
+	{
+		return TileEntityFurnaceCore.processingTime > 0;
+	}
+	
+	public int getDiFurnaceProgressScaled(int i)
+	{
+		return (int) ((progress * i) / processingTime);
+	}
+	
+	public long getHeatRemainingScaled(long i)
+	{
+		return (long) ((heat * i) / maxHeat);
 	}
 	
 	public boolean canProcess()
@@ -165,9 +193,40 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	{
 		boolean flag = false;
 		
-		/*if (!world.isRemote)
+		if (!world.isRemote)
 		{
-			
-		}*/
+			long prevHeat = heat;
+						
+			if (hasHeat() && canProcess())
+			{
+				progress++;
+				
+				heat -= 50;
+				
+				if (this.progress == TileEntityFurnaceCore.processingTime)
+				{
+					this.progress = 0;
+					this.processItem();
+					flag = true;
+				}
+				else
+				{
+					progress = 0;
+				}
+				
+				boolean trigger = true;
+				
+				if (hasHeat() && canProcess() && this.progress == 0)
+				{
+					trigger = false;
+				}
+				
+				if (trigger)
+				{
+					flag = true;
+					//Furnacecore
+				}
+			}
+		}
 	}
 }
