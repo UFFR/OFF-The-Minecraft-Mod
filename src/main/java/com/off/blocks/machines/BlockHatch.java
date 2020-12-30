@@ -1,4 +1,6 @@
-package com.off.blocks;
+package com.off.blocks.machines;
+
+import java.util.Random;
 
 import com.off.MainInit;
 import com.off.init.ModBlocks;
@@ -34,7 +36,7 @@ import net.minecraft.world.World;
 public class BlockHatch extends BlockContainer implements IHasModel, ITileEntityProvider
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyBool ACTIVE = PropertyBool.create("active");
+	public static final PropertyBool BURNING = PropertyBool.create("BURNING");
 	
 	public BlockHatch(String name)
 	{
@@ -45,10 +47,23 @@ public class BlockHatch extends BlockContainer implements IHasModel, ITileEntity
 		setHardness(ModBlocks.defaultHardness);
 		setResistance(ModBlocks.defaultResistance);
 		setHarvestLevel(ModBlocks.defaultToolType, ModBlocks.defaultHarvestLevel);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		return Item.getItemFromBlock(ModBlocks.FURNACE_ACCESS);
+	}
+	
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+	{
+		return new ItemStack(ModBlocks.FURNACE_ACCESS);
+	}
+	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
@@ -124,7 +139,6 @@ public class BlockHatch extends BlockContainer implements IHasModel, ITileEntity
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

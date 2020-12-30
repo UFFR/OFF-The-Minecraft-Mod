@@ -1,3 +1,5 @@
+container.compactor=Compactor
+
 tile.dirt.name=Lump of Low-Grade Metal
 tile.rock.name=Rock
 tile.ore_metal.name=Metal Ore
@@ -22,6 +24,7 @@ tile.stairs_brick_metal.name=Metal Brick Stairs
 tile.stairs_metal.name=Metal Stairs
 tile.stairs_plastic.name=Plastic Stairs
 tile.stairs_brick.name=Brick Stairs
+tile.compactor.name=Compactor
 
 tile.crate_metal.name=Crate of Metal
 tile.crate_meat.name=Crate of Meat

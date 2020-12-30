@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "IPI",
+        "PRP",
+        "IPI"
+    ],
+    
+    "key":
+    {
+        "P":
+        {
+            "item": "minecraft:piston"
+        },
+        "I":
+        {
+        	"item": "off:ingot_metal"
+        },
+        "R":
+        {
+        	"item": "minecraft:redstone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:compactor",
+        "count": 1
+    }
+}

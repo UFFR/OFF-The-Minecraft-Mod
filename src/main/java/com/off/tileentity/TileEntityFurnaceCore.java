@@ -20,14 +20,15 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	 1 = Input
 	 2 = Output
 	*/
-	public int fuel = 0;
+	public int fuel = 0; // Not sure if it will count in furnace operations or burn time in ticks
 	public long progress = 0;
 	public boolean active = false;
-	public long heat = 20;
-	public float maxHeat = 1000.0F;
+	public long heat = 20; // Room temperature
+	public float maxHeat = 1500.0F; // Anything hotter would be a bit unrealistic for a furnace
+	public int maxFuel = 2000; // Open to change during testing
 	public ItemStackHandler inventory;
 	public ICapabilityProvider dropProvider;
-	public static int processingTime = 50;
+	public static int processingTime = 100; // Base level, changes with temperature
 	
 	private String customName;
 	
@@ -148,6 +149,10 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 		if (inventory.getStackInSlot(2).getCount() < inventory.getSlotLimit(2) && inventory.getStackInSlot(2).getCount() < inventory.getStackInSlot(2).getMaxStackSize())
 		{
 			return true;
+		}
+		if (heat < 200)
+		{
+			return false;
 		}
 		else
 		{

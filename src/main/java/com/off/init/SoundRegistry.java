@@ -17,6 +17,7 @@ public final class SoundRegistry
 	public static SoundEvent silencio;
 	public static SoundEvent fourteenResidents;
 	public static SoundEvent pepperSteak;
+	public static SoundEvent pepperSteakLoop;
 	public static SoundEvent notSafe;
 	public static SoundEvent stayInYourComa;
 	public static SoundEvent emptyWarehouse;
@@ -48,6 +49,10 @@ public final class SoundRegistry
 		clockwork = registerBypass("11_clockwork");
 		fleshMazeTango = registerBypass("12_flesh_maze_tango");
 		fakeOrchestra = registerBypass("13_fake_orchestra");
+		
+		/* Special */
+		// Battle sounds
+		pepperSteakLoop = register("pepper_steak_loop");
 	}
 	
 	public static SoundEvent register(String name)

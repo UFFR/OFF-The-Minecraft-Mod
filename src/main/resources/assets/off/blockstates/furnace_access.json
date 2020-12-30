@@ -1,8 +1,13 @@
 {
   "variants": {
-  	"facing=north": { "model": "off:furnace_access" },
-  	"facing=south": { "model": "off:furnace_access", "y": 180 },
-  	"facing=west": { "model": "off:furnace_access", "y": 270 },
-  	"facing=east": { "model": "off:furnace_access", "y": 90 }
+  	"burning=false,facing=north": { "model": "off:furnace_access" },
+  	"burning=false,facing=south": { "model": "off:furnace_access", "y": 180 },
+  	"burning=false,facing=west": { "model": "off:furnace_access", "y": 270 },
+  	"burning=false,facing=east": { "model": "off:furnace_access", "y": 90 },
+  	"burning=true,facing=north": { "model": "off:furnace_access_active" },
+  	"burning=true,facing=south": { "model": "off:furnace_access_active", "y": 180 },
+  	"burning=true,facing=west": { "model": "off:furnace_access_active", "y": 270 },
+  	"burning=true,facing=east": { "model": "off:furnace_access_active", "y": 90 }
+  	
     }
 }

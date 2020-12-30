@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "off:furnace_core" }
+        "normal": { "model": "off:furnace_core_component" }
     }
 }

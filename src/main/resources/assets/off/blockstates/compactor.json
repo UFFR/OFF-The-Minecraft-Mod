@@ -1,0 +1,13 @@
+{
+  "variants": {
+  	"active=false,facing=north": { "model": "off:compactor" },
+  	"active=false,facing=south": { "model": "off:compactor", "y": 180 },
+  	"active=false,facing=west": { "model": "off:compactor", "y": 270 },
+  	"active=false,facing=east": { "model": "off:compactor", "y": 90 },
+  	"active=true,facing=north": { "model": "off:compactor" },
+  	"active=true,facing=south": { "model": "off:compactor", "y": 180 },
+  	"active=true,facing=west": { "model": "off:compactor", "y": 270 },
+  	"active=true,facing=east": { "model": "off:compactor", "y": 90 }
+  	
+    }
+}
