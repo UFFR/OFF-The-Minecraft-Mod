@@ -55,7 +55,7 @@ public class ModBlocks
 	public static final Block ORE_METAL = new BlockBase("ore_metal", defaultMaterial, defaultSound, 3.0F, 8.0F, defaultToolType, defaultHarvestLevel); // Slightly tougher than regular rock, slightly less common than smoke
 	
 	/* Non generating */
-	// Trading crates. Self-explanatory, can either be bought or made and sold
+	// Trading crates. Self-explanatory, can either be bought for material or made and sold for credits
 	public static final Block CRATE_SMOKE = new BlockCrate("crate_smoke", Material.WOOD);
 	public static final Block CRATE_METAL = new BlockCrate("crate_metal", Material.WOOD);
 	public static final Block CRATE_PLASTIC = new BlockCrate("crate_plastic", Material.WOOD);

@@ -1,8 +1,11 @@
 package com.off.blocks.machines;
 
+import java.util.Random;
+
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.tileentity.TileEntityCompactor;
 import com.off.util.IHasModel;
 import com.off.util.Reference;
 
@@ -53,6 +56,18 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 	}
 
 	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		return Item.getItemFromBlock(ModBlocks.COMPACTOR);
+	}
+	
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+	{
+		return new ItemStack(ModBlocks.COMPACTOR);
+	}
+	
+	@Override
 	public void registerModels()
 	{
 		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
@@ -99,8 +114,8 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		
-		if (active)	worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(ACTIVE, true), 3);
-		else worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(ACTIVE, false), 3);
+		/*if (active)	worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(ACTIVE, true), 3);
+		else worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(ACTIVE, false), 3);*/
 		
 		if (tileEntity != null)
 		{
@@ -127,14 +142,6 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 			ItemStack stack)
 	{
 		worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
-	}
-	
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
-	{
-		TileEntityCompactor tileEntity = (TileEntityCompactor)worldIn.getTileEntity(pos);
-		InventoryHelper.dropInventoryItems(worldIn, pos, tileEntity);
-		super.breakBlock(worldIn, pos, state);
 	}
 	
 	@Override
@@ -187,5 +194,11 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 			EnumFacing facing, float hitX, float hitY) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state)
+	{
+		return true;
 	}
 }

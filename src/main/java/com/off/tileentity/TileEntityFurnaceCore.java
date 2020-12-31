@@ -23,12 +23,12 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	public int fuel = 0; // Not sure if it will count in furnace operations or burn time in ticks
 	public long progress = 0;
 	public boolean active = false;
-	public long heat = 20; // Room temperature
+	public static long heat = 20; // Room temperature
 	public float maxHeat = 1500.0F; // Anything hotter would be a bit unrealistic for a furnace
 	public int maxFuel = 2000; // Open to change during testing
 	public ItemStackHandler inventory;
 	public ICapabilityProvider dropProvider;
-	public static int processingTime = 100; // Base level, changes with temperature
+	public static int processingTime = (int) (-0.111111*heat + 216.666667); // Base level (200), changes with temperature, uses typical linear function
 	
 	private String customName;
 	

@@ -17,5 +17,7 @@ public class SmeltingRecipes
 		GameRegistry.addSmelting(ModItems.MEAT_METAL, new ItemStack(ModItems.FRAGMENT_POOR_METAL, 3), 0.75F);
 		GameRegistry.addSmelting(ModItems.NUGGET_METAL_IMPURE, new ItemStack(ModItems.NUGGET_METAL), 0.75F);
 		GameRegistry.addSmelting(ModItems.FLESH_ELSEN, new ItemStack(ModItems.FLESH_ELSEN_BURNED), 2.5F);
+		GameRegistry.addSmelting(ModItems.PLATE_METAL, new ItemStack(ModItems.INGOT_METAL), 0.25F);
+		GameRegistry.addSmelting(ModItems.PLATE_PLASTIC, new ItemStack(ModItems.INGOT_PLASTIC_RAW), 0.25F);
 	}
 }

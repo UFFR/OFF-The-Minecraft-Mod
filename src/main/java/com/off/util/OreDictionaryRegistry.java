@@ -16,6 +16,10 @@ public class OreDictionaryRegistry
 		OreDictionary.registerOre("ingotPoorMetal", ModItems.POOR_METAL);
 		OreDictionary.registerOre("dustSugar", ModItems.SUGAR);
 		
+		// Plates
+		OreDictionary.registerOre("plateMetal", ModItems.PLATE_METAL);
+		OreDictionary.registerOre("platePlastic", ModItems.PLATE_PLASTIC);
+		
 		// Nuggets
 		OreDictionary.registerOre("nuggetMetal", ModItems.NUGGET_METAL);
 		OreDictionary.registerOre("nuggetPoorMetal", ModItems.FRAGMENT_POOR_METAL);

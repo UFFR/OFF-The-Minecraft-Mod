@@ -33,12 +33,14 @@ tile.crate_plastic.name=Crate of Plastic
 
 item.bottle_smoke.name=Bottle of Smoke
 item.ingot_metal.name=Metal Ingot
+item.plate_metal.name=Metal Plate
 item.nugget_metal.name=Metal Nugget
 item.nugget_metal_impure.name=Impure Metal Nugget
 item.poor_metal.name=Poor-Quality Metal
 item.fragment_poor_metal.name=Fragment of Low-Grade Metal
 item.metal_meat.name=Metal Infused Meat
 item.ingot_plastic.name=Plastic Ingot
+item.plate_plastic.name=Plastic Plate
 item.ingot_plastic_raw.name=Raw Plastic Ingot
 item.nugget_plastic_raw.name=Raw Plastic Nugget
 item.bottle_plastic.name=Bottle of Plastic
