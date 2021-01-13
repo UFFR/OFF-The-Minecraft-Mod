@@ -1,5 +1,7 @@
+//GUIs
 container.compactor=Compactor
 
+//Blocks
 tile.dirt.name=Lump of Low-Grade Metal
 tile.rock.name=Rock
 tile.ore_metal.name=Metal Ore
@@ -26,11 +28,13 @@ tile.stairs_plastic.name=Plastic Stairs
 tile.stairs_brick.name=Brick Stairs
 tile.compactor.name=Compactor
 
+//Crates
 tile.crate_metal.name=Crate of Metal
 tile.crate_meat.name=Crate of Meat
 tile.crate_smoke.name=Crate of Smoke
 tile.crate_plastic.name=Crate of Plastic
 
+//Items
 item.bottle_smoke.name=Bottle of Smoke
 item.ingot_metal.name=Metal Ingot
 item.plate_metal.name=Metal Plate
@@ -59,6 +63,7 @@ item.flesh_elsen_burned.name=Charred Elsen Flesh
 item.bottle_sealed.name=Sealed Bottle
 item.crowbar.name=Crate Opener
 
+//Discs
 item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
 item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents
 item.record.Pepper Steak.desc=Alias Conrad Coldwood - Pepper Steak
@@ -72,11 +77,13 @@ item.record.Clockwork.desc=Alias Conrad Coldwood - Clockwork
 item.record.Flesh Maze Tango.desc=Alias Conrad Coldwood - Flesh Maze Tango
 item.record.Fake Orchestra.desc=Alias Conrad Coldwood - Fake Orchestra
 
+//Creative tabs
 itemGroup.tabOFFItems=OFF Items
 itemGroup.tabOFFBlocks=OFF Blocks
 itemGroup.tabOFFTools=OFF Tools
 itemGroup.tabOFFMusic=OFF Music
 
+//Fluids
 fluid.plastic=Plastic
 fluid.smoke=Smoke
 fluid.meat=Meat

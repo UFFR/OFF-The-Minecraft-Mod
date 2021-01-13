@@ -36,7 +36,7 @@ import net.minecraft.world.World;
 public class BlockHatch extends BlockContainer implements IHasModel, ITileEntityProvider
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyBool BURNING = PropertyBool.create("BURNING");
+	//public static final PropertyBool BURNING = PropertyBool.create("BURNING");
 	
 	public BlockHatch(String name)
 	{
@@ -47,7 +47,7 @@ public class BlockHatch extends BlockContainer implements IHasModel, ITileEntity
 		setHardness(ModBlocks.defaultHardness);
 		setResistance(ModBlocks.defaultResistance);
 		setHarvestLevel(ModBlocks.defaultToolType, ModBlocks.defaultHarvestLevel);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));//.withProperty(BURNING, false));
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}

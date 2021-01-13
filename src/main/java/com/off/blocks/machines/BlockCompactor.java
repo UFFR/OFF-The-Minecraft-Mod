@@ -3,15 +3,14 @@ package com.off.blocks.machines;
 import java.util.Random;
 
 import com.off.MainInit;
+import com.off.blocks.BlockBase;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.tileentity.TileEntityCompactor;
 import com.off.util.IHasModel;
 import com.off.util.Reference;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -21,6 +20,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -34,16 +34,20 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockCompactor extends BlockContainer implements ITileEntityProvider, IHasModel
+public class BlockCompactor extends BlockBase implements /*ITileEntityProvider,*/ IHasModel
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	
+	private final boolean isActive;
+	private static boolean keepInventory;
+	
 	public BlockCompactor(String name)
 	{
-		super(Material.IRON);
+		super(name, Material.IRON, SoundType.METAL, ModBlocks.defaultHardness, ModBlocks.defaultResistance, ModBlocks.defaultToolType, 0);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(SoundType.METAL);
@@ -59,6 +63,13 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
 		return Item.getItemFromBlock(ModBlocks.COMPACTOR);
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
+				EntityPlayer player)
+	{
+			return new ItemStack(Item.getItemFromBlock(ModBlocks.COMPACTOR));
 	}
 	
 	@Override
@@ -83,15 +94,43 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		if (!worldIn.isRemote)
+		if (worldIn.isRemote)
 		{
-			playerIn.openGui(MainInit.instance, Reference.GUI_COMPACTOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			return true;
 		}
-		return true;
+		else if (!playerIn.isSneaking())
+		{
+			TileEntityCompactor tileEntity = (TileEntityCompactor) worldIn.getTileEntity(pos);
+			if (tileEntity != null)
+			{
+				playerIn.openGui(MainInit.instance, Reference.GUI_COMPACTOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	@Override
+		public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+	{
+		if (!keepInventory)
+		{
+			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) worldIn.getTileEntity(pos));
+		}
+		super.breakBlock(worldIn, pos, state);
 	}
 	
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	{
+		super.onBlockAdded(worldIn, pos, state);
+		this.setDefaultFacing(worldIn, pos, state);
+	}
+	
+	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
 	{
 		if (!worldIn.isRemote)
 		{
@@ -107,11 +146,12 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
 		}
+
 	}
 
 	public static void setState(boolean active, World worldIn, BlockPos pos)
 	{
-		IBlockState state = worldIn.getBlockState(pos);
+		//IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		
 		/*if (active)	worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(ACTIVE, true), 3);
@@ -124,8 +164,8 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 		}
 	}
 	
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta)
+	//@Override
+	public TileEntity createTileEntity(World worldIn, int meta)
 	{
 		return new TileEntityCompactor();
 	}
@@ -142,6 +182,15 @@ public class BlockCompactor extends BlockContainer implements ITileEntityProvide
 			ItemStack stack)
 	{
 		worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+		if (stack.hasDisplayName())
+		{
+			TileEntity tileEntity = worldIn.getTileEntity(pos);
+			
+			if (tileEntity instanceof TileEntityCompactor)
+			{
+				((TileEntityCompactor)tileEntity).setCustomName(stack.getDisplayName());
+			}
+		}
 	}
 	
 	@Override

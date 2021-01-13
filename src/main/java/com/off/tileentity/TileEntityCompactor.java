@@ -1,6 +1,8 @@
 package com.off.tileentity;
 
 import com.off.blocks.machines.BlockCompactor;
+import com.off.inventory.CompactorRecipes;
+import com.off.inventory.CompactorRecipes.CompactorRecipe;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,15 +16,33 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityCompactor extends TileEntity implements ITickable
 {
-	private ItemStackHandler inventory = new ItemStackHandler(2);
+	private ItemStackHandler inventory;
 	private String customName;
 	private ItemStack processing = ItemStack.EMPTY;
-	private int processingTime;
+	private static int processingTime;
 	private int totalTime = 200;
+	
+	public TileEntityCompactor()
+	{
+		inventory = new ItemStackHandler(2)
+		{
+			@Override
+			protected void onContentsChanged(int slot)
+			{
+				markDirty();
+				super.onContentsChanged(slot);
+			}
+		};
+	}
+	
+	public String getInventoryName()
+	{
+		return this.hasCustomName() ? this.customName : "container.compactor";
+	}
 	
 	public boolean hasCustomName()
 	{
-		return this.customName != null && !this.customName.isEmpty();
+		return this.customName != null && !this.customName.isEmpty() && this.customName.length() > 0;
 	}
 	
 	public void setCustomName(String customName)
@@ -40,7 +60,7 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
-		compound.setInteger("ProcessingTime", (short)this.processingTime);
+		compound.setInteger("ProcessingTime", (short)TileEntityCompactor.processingTime);
 		compound.setInteger("TotalTime", (short)this.totalTime);
 		compound.setTag("Inventory", this.inventory.serializeNBT());
 		
@@ -53,7 +73,7 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	{
 		super.readFromNBT(compound);
 		this.inventory.deserializeNBT(compound.getCompoundTag("Inventory"));
-		this.processingTime = compound.getInteger("ProcessingTime");
+		TileEntityCompactor.processingTime = compound.getInteger("ProcessingTime");
 		this.totalTime = compound.getInteger("TotalTime");
 		
 		if (compound.hasKey("CustomName", 8))
@@ -64,23 +84,23 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	
 	private boolean canProcess()
 	{
-		if (((ItemStack)this.inventory.getStackInSlot(0)).isEmpty())
-			return false;
-		else
+		if (inventory.getStackInSlot(0).isEmpty())
 		{
-			ItemStack result = CompactorRecipes.getInstance().getCompactorResult((ItemStack)this.inventory.getStackInSlot(0));
-			
-			if (result.isEmpty())
-				return false;
-			else
-			{
-				ItemStack output = (ItemStack)this.inventory.getStackInSlot(1);
-				if (output.isEmpty()) return false;
-				if (!output.isItemEqual(result)) return false;
-				int res = output.getCount() + result.getCount();
-				return res <= 64 && res <= output.getMaxStackSize();
-			}
+			return false;
 		}
+		
+		CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(0));
+		
+		if (recipe == null)
+			return false;
+		if (inventory.getStackInSlot(1).isEmpty())
+			return true;
+		if (!inventory.getStackInSlot(1).isItemEqual(recipe.output))
+			return false;
+		if (inventory.getStackInSlot(1).getCount() < inventory.getSlotLimit(1) && inventory.getStackInSlot(1).getCount() < inventory.getStackInSlot(1).getMaxStackSize())
+			return true;
+		else
+			return inventory.getStackInSlot(1).getCount() < recipe.output.getMaxStackSize();
 	}
 	
 	public boolean isUsableByPlayer(EntityPlayer player)
@@ -116,6 +136,34 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 		case 1:
 			this.totalTime = value;
 			break;
+		}
+	}
+	
+	private void processItem()
+	{
+		if (canProcess())
+		{
+			CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(1));
+			
+			if (recipe == null)
+				return;
+			
+			ItemStack itemStack = recipe.output;
+			
+			if (inventory.getStackInSlot(1).isEmpty())
+				inventory.setStackInSlot(1, itemStack.copy());
+			else if (inventory.getStackInSlot(1).isItemEqual(itemStack))
+				inventory.getStackInSlot(1).grow(itemStack.getCount());
+			
+			for (int i = 1; i < 2; i++)
+			{
+				if (inventory.getStackInSlot(i).isEmpty())
+					inventory.setStackInSlot(i, new ItemStack(inventory.getStackInSlot(i).getItem()));
+				else
+					inventory.getStackInSlot(0).shrink(1);
+				/*if (inventory.getStackInSlot(i).isEmpty())
+					inventory.setStackInSlot(i, ItemStack.EMPTY);*/
+			}
 		}
 	}
 
@@ -160,6 +208,11 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 			}
 		}
 		BlockCompactor.setState(false, this.world, this.pos);
+	}
+	
+	public static boolean isActive()
+	{
+		return processingTime > 0;
 	}
 
 }

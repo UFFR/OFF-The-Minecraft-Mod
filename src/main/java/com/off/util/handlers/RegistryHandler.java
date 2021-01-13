@@ -1,7 +1,9 @@
 package com.off.util.handlers;
 
+import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.init.SoundRegistry;
 import com.off.util.IHasModel;
 
 import net.minecraft.block.Block;
@@ -10,6 +12,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @EventBusSubscriber
 public class RegistryHandler
@@ -44,5 +47,11 @@ public class RegistryHandler
 				((IHasModel)block).registerModels();
 			}
 		}
+	}
+	
+	public static void initRegistries()
+	{
+		SoundRegistry.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(MainInit.instance, new GuiHandler());
 	}
 }

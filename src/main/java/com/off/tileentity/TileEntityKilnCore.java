@@ -12,7 +12,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityFurnaceCore extends TileEntity implements ITickable
+public class TileEntityKilnCore extends TileEntity implements ITickable
 {
 	/*
 	 * Slots
@@ -32,7 +32,7 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	
 	private String customName;
 	
-	public TileEntityFurnaceCore()
+	public TileEntityKilnCore()
 	{
 		inventory = new ItemStackHandler(27)
 		{
@@ -114,7 +114,7 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 	
 	public boolean isProcessing()
 	{
-		return TileEntityFurnaceCore.processingTime > 0;
+		return TileEntityKilnCore.processingTime > 0;
 	}
 	
 	public int getDiFurnaceProgressScaled(int i)
@@ -208,7 +208,7 @@ public class TileEntityFurnaceCore extends TileEntity implements ITickable
 				
 				heat -= 50;
 				
-				if (this.progress == TileEntityFurnaceCore.processingTime)
+				if (this.progress == TileEntityKilnCore.processingTime)
 				{
 					this.progress = 0;
 					this.processItem();

@@ -20,10 +20,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class MachineFurnaceCore extends BlockContainer implements IHasModel
+public class MachineKilnCore extends BlockContainer implements IHasModel
 {
 
-	public MachineFurnaceCore(String name, Material materialIn)
+	public MachineKilnCore(String name, Material materialIn)
 	{
 		super(materialIn);
 		setUnlocalizedName(name);

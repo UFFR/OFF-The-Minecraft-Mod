@@ -46,6 +46,7 @@ public class ItemLore extends Item
 				"Compressed low quality metal",
 				"Can be used for Half-Life roleplaying",
 				"A curious brightly colored cube...",
-				"Its bright colors clash with the environment, going against any form of the plastic arts"
+				"Its bright colors clash with the environment, going against any form of the plastic arts",
+				"Yellow-colored rock unique to Zone 0, not benefit other than differing color choice"
 		};
 }
