@@ -13,6 +13,7 @@ public class ItemLore extends Item
 		"\"As the first of the four elements... It's an important element. Because without meat, people would have nothing to eat. They would die of starvation, one after another.\"",
 		"\"It's a secret element... The fifth element... The most important element... Because without sugar, people could no longer bear reality, and they would go mad.\""
 	};
+	// I have no idea why I thought this was a good idea
 	public static String[] loreAll = 
 		{
 				"Can be used to hold fluid elements for trading",
@@ -47,6 +48,6 @@ public class ItemLore extends Item
 				"Can be used for Half-Life roleplaying",
 				"A curious brightly colored cube...",
 				"Its bright colors clash with the environment, going against any form of the plastic arts",
-				"Yellow-colored rock unique to Zone 0, not benefit other than differing color choice"
+				"Yellow-colored rock unique to Zone 0, no benefit other than differing color choice"
 		};
 }

@@ -2,10 +2,8 @@ package com.off.blocks;
 
 import java.util.List;
 
-import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
-import com.off.util.IHasModel;
 import com.off.util.ItemLore;
 
 import net.minecraft.block.Block;
@@ -16,18 +14,16 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
-public class BlockCrate extends Block implements IHasModel
+public class BlockCrate extends Block
 {
 
 	public BlockCrate(String name, Material materialIn)
@@ -89,30 +85,4 @@ public class BlockCrate extends Block implements IHasModel
 	{
 		tooltip.add(ItemLore.loreAll[1]);
 	}
-	
-	@Override
-	public void registerModels()
-	{
-		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -3,6 +3,7 @@ package com.off.util;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 
+import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictionaryRegistry
@@ -35,11 +36,15 @@ public class OreDictionaryRegistry
 		OreDictionary.registerOre("blockSugar", ModBlocks.BLOCK_SUGAR);
 		
 		// Records
-		OreDictionary.registerOre("record", ModItems.DISC_SILENCIO);
-		OreDictionary.registerOre("record", ModItems.DISC_FOURTEEN_RESIDENTS);
-		OreDictionary.registerOre("record", ModItems.DISC_PEPPER_STEAK);
+		// Efficiency!
+		for (Item item : ModItems.RECORDS)
+		{
+			OreDictionary.registerOre("record", item);
+		}
 		
 		// Misc
 		OreDictionary.registerOre("cobblestone", ModBlocks.ROCK);
+		OreDictionary.registerOre("stone", ModBlocks.ROCK);
+		OreDictionary.registerOre("dirt", ModBlocks.DIRT);
 	}
 }

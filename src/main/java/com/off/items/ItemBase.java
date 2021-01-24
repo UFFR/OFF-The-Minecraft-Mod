@@ -1,27 +1,19 @@
 package com.off.items;
 
 import java.util.List;
-import java.util.Random;
 
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
-import com.off.util.IHasModel;
 import com.off.util.ItemLore;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemBase extends Item implements IHasModel
+public class ItemBase extends Item
 {
 
 	public ItemBase(String name)
@@ -86,6 +78,7 @@ public class ItemBase extends Item implements IHasModel
 		if (this == ModItems.INGOT_METAL || this == ModItems.NUGGET_METAL || this == ModItems.NUGGET_METAL_IMPURE || this == ModItems.FRAGMENT_POOR_METAL || this == ModItems.POOR_METAL)
 		{
 			tooltip.add(ItemLore.elementLore[1]);
+			tooltip.add(ItemLore.loreAll[5]);
 		}
 		if (this == ModItems.INGOT_PLASTIC || this == ModItems.NUGGET_PLASTIC_RAW || this == ModItems.INGOT_PLASTIC_RAW)
 		{
@@ -156,7 +149,7 @@ public class ItemBase extends Item implements IHasModel
 		}
 		if (this == ModItems.SUGAR)
 		{
-			tooltip.add(ItemLore.elementLore[0]);
+			tooltip.add(ItemLore.elementLore[4]);
 			tooltip.add(ItemLore.loreAll[16]);
 		}
 		if (this == ModItems.FLESH_ELSEN)
@@ -175,38 +168,5 @@ public class ItemBase extends Item implements IHasModel
 		{
 			tooltip.add(ItemLore.loreAll[29]);
 		}
-	}
-	
-	@Override
-	public void registerModels()
-	{
-		MainInit.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-	
-	@Override
-	public boolean isOpaqueCube()
-	{
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing facing, float hitx, float hity, float hitz) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

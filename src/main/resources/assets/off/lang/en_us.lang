@@ -2,7 +2,7 @@
 container.compactor=Compactor
 
 //Blocks
-tile.dirt.name=Lump of Low-Grade Metal
+tile.dirt.name=Mound of Low-Grade Metal
 tile.rock.name=Rock
 tile.ore_metal.name=Metal Ore
 tile.block_metal.name=Block of Metal

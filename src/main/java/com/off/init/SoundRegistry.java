@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.off.util.Reference;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -13,6 +14,8 @@ public final class SoundRegistry
 {
 	public static List<SoundEvent> ALL_SOUNDS = new ArrayList<SoundEvent>();
 	
+	public static SoundEvent nullSound;
+	public static SoundType nullBlock;
 	public static SoundEvent global;
 	public static SoundEvent silencio;
 	public static SoundEvent fourteenResidents;
@@ -53,7 +56,10 @@ public final class SoundRegistry
 		/* Special */
 		// Battle sounds
 		pepperSteakLoop = register("pepper_steak_loop");
-	}
+		// Misc
+		nullSound = register("null_sound");
+		nullBlock = new SoundType(1.0F, 1.0F, nullSound, nullSound, nullSound, nullSound, nullSound);
+}
 	
 	public static SoundEvent register(String name)
 	{

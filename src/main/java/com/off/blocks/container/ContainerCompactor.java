@@ -92,7 +92,8 @@ public class ContainerCompactor extends Container
 			{
 				//Slot slot2 = (Slot)this.inventorySlots.get(index + 1);
 				
-				if (!CompactorRecipes.getInstance().getCompactorResult(itemStack2).isEmpty())
+				CompactorRecipes.getInstance();
+				if (!(CompactorRecipes.getOutput(itemStack2) == null))
 				{
 					if (!this.mergeItemStack(itemStack2, 0, 2, false))
 					{

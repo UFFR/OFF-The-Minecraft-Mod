@@ -1,4 +1,11 @@
 {
+	"null_sound": {
+		"category": "neutral",
+		"sounds": [{
+			"name": "off:null_sound",
+			"stream": false
+		}]
+	},
 	"pepper_steak_loop": {
 		"category": "neutral",
 		"sounds": [{

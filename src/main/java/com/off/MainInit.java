@@ -9,7 +9,10 @@ import com.off.init.SoundRegistry;
 import com.off.proxy.CommonProxy;
 import com.off.util.OreDictionaryRegistry;
 import com.off.util.Reference;
+import com.off.util.TextureLoader;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -72,8 +75,10 @@ public class MainInit
     {
         logger = event.getModLog();
         System.out.println(Reference.MODID + ":preInit");
-        SoundRegistry.init();
-        //ModItems.init();
+        SoundRegistry.init();// Register sounds
+        ModItems.preInit();// Register items
+        ModBlocks.preInit();// Register blocks
+        TextureLoader.registerItems();// Register textures and models
     }
 
     @EventHandler
@@ -82,8 +87,10 @@ public class MainInit
         // some example code
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         System.out.println(Reference.MODID + ":init");
-        SmeltingRecipes.init();
-        OreDictionaryRegistry.registry();
+        SmeltingRecipes.init();// Register smelting recipes
+        OreDictionaryRegistry.registry();// Register ore dictionary
+		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+        TextureLoader.registerBlocks(mesher);// Register item blocks
     }
     
 	@EventHandler

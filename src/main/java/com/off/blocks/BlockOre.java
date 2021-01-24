@@ -6,26 +6,19 @@ import java.util.Random;
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
-import com.off.util.IHasModel;
 import com.off.util.ItemLore;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockOre extends Block implements IHasModel
+public class BlockOre extends Block
 {
 	public BlockOre(String name, Material material, Float hardness, Float resistance)
 	{
@@ -85,12 +78,6 @@ public class BlockOre extends Block implements IHasModel
 	}
 	
 	@Override
-	public void registerModels()
-	{
-		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");	
-	}
-
-	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		if (this == ModBlocks.ORE_SMOKE || this == ModBlocks.ORE_SMOKE_EMPTY)
@@ -103,23 +90,8 @@ public class BlockOre extends Block implements IHasModel
 		}
 	}
 
-	@Override
 	public boolean isOpaqueCube()
 	{
-		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		// TODO Auto-generated method stub
-		return EnumRarity.COMMON;
 	}
 }

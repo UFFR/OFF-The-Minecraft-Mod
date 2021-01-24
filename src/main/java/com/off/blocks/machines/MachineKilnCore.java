@@ -3,7 +3,6 @@ package com.off.blocks.machines;
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
-import com.off.util.IHasModel;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -20,7 +19,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class MachineKilnCore extends BlockContainer implements IHasModel
+public class MachineKilnCore extends BlockContainer
 {
 
 	public MachineKilnCore(String name, Material materialIn)
@@ -43,30 +42,4 @@ public class MachineKilnCore extends BlockContainer implements IHasModel
 	{
 		return true;
 	}
-	
-	@Override
-	public void registerModels()
-	{
-		MainInit.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

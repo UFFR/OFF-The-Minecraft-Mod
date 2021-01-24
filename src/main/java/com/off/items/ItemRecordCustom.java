@@ -3,14 +3,11 @@ package com.off.items;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import com.off.MainInit;
 import com.off.init.ModItems;
-import com.off.util.IHasModel;
 
 import net.minecraft.block.BlockJukebox;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRecordCustom extends ItemRecord implements IHasModel
+public class ItemRecordCustom extends ItemRecord
 {
 	private static final Map<String, ItemRecordCustom> modRecords = new HashMap<String, ItemRecordCustom>();
 	public final String recordName;
@@ -43,11 +40,11 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 		this.setCreativeTab(MainInit.tabOFFMusic);
 		recordName = itemName;
 		modRecords.put(itemName, this);
-		
 		ModItems.ITEMS.add(this);
+		ModItems.RECORDS.add(this);
 	}
 	
-	@Override
+	//@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY)
 	{
 		if (worldIn.getBlockState(pos).getBlock() == Blocks.JUKEBOX && !worldIn.getBlockState(pos).getValue(BlockJukebox.HAS_RECORD).booleanValue())
@@ -76,54 +73,7 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
 		tooltip.add(this.getRecordNameLocal());
-		if (this == ModItems.DISC_SILENCIO)
-		{
-			tooltip.add("Track #2");
-		}
-		if (this == ModItems.DISC_FOURTEEN_RESIDENTS)
-		{
-			tooltip.add("Track #3");
-		}
-		if (this == ModItems.DISC_PEPPER_STEAK)
-		{
-			tooltip.add("Track #4");
-		}
-		if (this == ModItems.DISC_NOT_SAFE)
-		{
-			tooltip.add("Track #5");
-		}
-		if (this == ModItems.DISC_STAY_IN_YOUR_COMA)
-		{
-			tooltip.add("Track #6");
-		}
-		if (this == ModItems.DISC_EMPTY_WAREHOUSE)
-		{
-			tooltip.add("Track #7");
-		}
-		if (this == ModItems.DISC_TENDER_SUGAR)
-		{
-			tooltip.add("Track #8");
-		}
-		if (this == ModItems.DISC_RAINY_DAY)
-		{
-			tooltip.add("Track #9");
-		}
-		if (this == ModItems.DISC_SOFT_BREEZE)
-		{
-			tooltip.add("Track #10");
-		}
-		if (this == ModItems.DISC_CLOCKWORK)
-		{
-			tooltip.add("Track #11");
-		}
-		if (this == ModItems.DISC_FLESH_MAZE_TANGO)
-		{
-			tooltip.add("Track #12");
-		}
-		if (this == ModItems.DISC_FAKE_ORCHESTRA)
-		{
-			tooltip.add("Track #13");
-		}
+		tooltip.add("Track #" + (ModItems.RECORDS.indexOf(this) + 2));
 	}
 	
 	@Override
@@ -164,30 +114,5 @@ public class ItemRecordCustom extends ItemRecord implements IHasModel
 	public String getItemStackDisplayName(ItemStack stack)
 	{
 		return (I18n.format(Items.RECORD_11.getUnlocalizedName() + ".name")).trim();
-	}
-
-	@Override
-	public void registerModels()
-	{
-		MainInit.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing facing, float hitx, float hity, float hitz) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

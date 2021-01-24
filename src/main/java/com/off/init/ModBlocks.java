@@ -16,6 +16,7 @@ import com.off.blocks.machines.BlockHatch;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ModBlocks
 {
@@ -25,7 +26,7 @@ public class ModBlocks
 	BlockOre: Block that drops something other than itself, doesn't have to be an ore
 	BlockFall: Self-explanatory
 	BlockSpecial: Block with special properties and may be considered "rare"
-	BlockCrate: Block that when right clicked with a crowbar, drops all its items
+	BlockCrate: Block that when right clicked with a crowbar, drops all its items, very specific
 	BlockPillar: Pillar-like rotations such as logs or, well, pillars
 	BlockStair: Self-explanatory
 	*/
@@ -62,7 +63,7 @@ public class ModBlocks
 	public static final Block CRATE_MEAT = new BlockCrate("crate_meat", Material.WOOD);
 	
 	// Oooo spooky blocks (they're actually just special blocks for one reason or another)
-	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundType.METAL, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true); // Standard void block, unbreakable
+	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundRegistry.nullBlock, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true); // Standard void block, unbreakable
 	public static final Block VOID_TREE_STEM = new BlockPillar("void_tree_stem", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 4); // Log of void trees, glows
 	public static final Block VOID_TREE_LEAVES = new BlockSpecial("void_tree_leaves", Material.LEAVES, SoundType.PLANT, 15.0F, 30.0F, "axe", 0, 0, 0.75F, false); // Leaves of void trees, glows
 	public static final Block VOID_TREE_PLANKS = new BlockSpecial("void_tree_planks", Material.WOOD, SoundType.WOOD, 15.0F, 30.0F, "axe", 0, 0, 0.75F, false); // Chopped wood of void trees, glows
@@ -81,7 +82,7 @@ public class ModBlocks
 	
 	/* Miscellaneous */
 	// Machines
-	public static final Block COMPACTOR = new BlockCompactor("compactor"); // Compacts "liquid" plastic ingots into fully solid ones
+	public static final Block COMPACTOR = new BlockCompactor("compactor"); // Compacts "liquid" plastic ingots into fully solid ones, can also make plates
 	// Building blocks
 	public static final Block BRICKS = new BlockBase("bricks", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel); // Cheap building material, most generated buildings use it.
 	public static final Block STAIRS_BRICK_METAL = new BlockStair(BRICKS_METAL.getDefaultState(), "stairs_brick_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Stairs made from metallic bricks
@@ -89,4 +90,11 @@ public class ModBlocks
 	public static final Block STAIRS_PLASTIC = new BlockStair(BLOCK_PLASTIC.getDefaultState(), "stairs_plastic", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Stairs made from plastic
 	public static final Block STAIRS_BRICK = new BlockStair(BRICKS.getDefaultState(), "stairs_brick", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel); // Stairs made from bricks
 
+	public static void preInit()
+	{
+		for (Block block : BLOCKS)
+		{
+			ForgeRegistries.BLOCKS.register(block);
+		}
+	}
 }

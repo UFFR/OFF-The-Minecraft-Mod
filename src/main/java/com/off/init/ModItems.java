@@ -7,10 +7,12 @@ import com.off.items.ItemBase;
 import com.off.items.ItemRecordCustom;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ModItems
 {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
+	public static final List<Item> RECORDS = new ArrayList<Item>();
 	//public static String defaultLore = null;
 	
 	/* Materials */
@@ -33,7 +35,7 @@ public class ModItems
 	// Meat items
 	public static final Item MEAT_RAW = new ItemBase("meat_raw"); // Raw meat
 	public static final Item MEAT = new ItemBase("meat"); // Cooked meat, edible
-	public static final Item BOTTLE_MEAT = new ItemBase("bottle_meat"); // Bottle containing meat, used in trading
+	public static final Item BOTTLE_MEAT = new ItemBase("bottle_meat"); // Bottle containing meat, used in trading or to get meat from liquid form
 	
 	// Smoke items
 	public static final Item BOTTLE_SMOKE = new ItemBase("bottle_smoke"); // Bottle containing smoke, item storage, also used in trading
@@ -72,5 +74,13 @@ public class ModItems
 	public static final Item DISC_CLOCKWORK = new ItemRecordCustom("disc_clockwork", SoundRegistry.clockwork, "Clockwork");
 	public static final Item DISC_FLESH_MAZE_TANGO = new ItemRecordCustom("disc_flesh_maze_tango", SoundRegistry.fleshMazeTango, "Flesh Maze Tango");
 	public static final Item DISC_FAKE_ORCHESTRA = new ItemRecordCustom("disc_fake_orchestra", SoundRegistry.fakeOrchestra, "Fake Orchestra");
+	
+	public static void preInit()
+	{
+		for (Item item : ITEMS)
+		{
+			ForgeRegistries.ITEMS.register(item);
+		}
+	}
 	
 }
