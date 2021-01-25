@@ -37,13 +37,9 @@ public class BlockOre extends Block
 	public int quantityDropped(Random rand)
 	{
 		if (this == ModBlocks.ORE_SMOKE)
-		{
 			return 3 + rand.nextInt(12);
-		}
 		if (this == ModBlocks.ORE_SMOKE_EMPTY)
-		{
 			return 7 + rand.nextInt(21);
-		}
 		return 1;
 	}
 	

@@ -49,22 +49,10 @@ public class BlockCrate extends Block
 				worldIn.setBlockToAir(pos);
 				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(Blocks.CHEST))));
 				ItemStack loot = null;
-				if (this == ModBlocks.CRATE_MEAT)
-				{
-					loot = new ItemStack(ModItems.MEAT, 8);
-				}
-				if (this == ModBlocks.CRATE_METAL)
-				{
-					loot = new ItemStack(ModItems.INGOT_METAL, 8);
-				}
-				if (this == ModBlocks.CRATE_PLASTIC)
-				{
-					loot = new ItemStack(ModItems.INGOT_PLASTIC, 8);
-				}
-				if (this == ModBlocks.CRATE_SMOKE)
-				{
-					loot = new ItemStack(ModItems.BOTTLE_SMOKE, 8);
-				}
+				if (this == ModBlocks.CRATE_MEAT) loot = new ItemStack(ModItems.MEAT, 8);
+				if (this == ModBlocks.CRATE_METAL) loot = new ItemStack(ModItems.INGOT_METAL, 8);
+				if (this == ModBlocks.CRATE_PLASTIC) loot = new ItemStack(ModItems.INGOT_PLASTIC, 8);
+				if (this == ModBlocks.CRATE_SMOKE) loot = new ItemStack(ModItems.BOTTLE_SMOKE, 8);
 				worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), loot));
 			}
 			return true;

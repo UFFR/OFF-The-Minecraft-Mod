@@ -6,10 +6,13 @@ import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.init.SmeltingRecipes;
 import com.off.init.SoundRegistry;
+import com.off.inventory.CompactorRecipes;
 import com.off.proxy.CommonProxy;
 import com.off.util.OreDictionaryRegistry;
 import com.off.util.Reference;
 import com.off.util.TextureLoader;
+import com.off.util.handlers.GuiHandler;
+import com.off.util.handlers.TileEntityHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
@@ -24,6 +27,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.MCVERSION)
 public class MainInit
@@ -79,6 +83,7 @@ public class MainInit
         ModItems.preInit();// Register items
         ModBlocks.preInit();// Register blocks
         TextureLoader.registerItems();// Register textures and models
+        TileEntityHandler.registerTileEntities();// Self explanatory
     }
 
     @EventHandler
@@ -90,7 +95,9 @@ public class MainInit
         SmeltingRecipes.init();// Register smelting recipes
         OreDictionaryRegistry.registry();// Register ore dictionary
 		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-        TextureLoader.registerBlocks(mesher);// Register item blocks
+        TextureLoader.registerBlocks(mesher);// Register item block textures
+    	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());// Register GUIs
+    	CompactorRecipes.register();// Register compactor recipes
     }
     
 	@EventHandler

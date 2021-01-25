@@ -10,6 +10,6 @@ public class TileEntityHandler
 {
 	public static void registerTileEntities()
 	{
-		GameRegistry.registerTileEntity(TileEntityCompactor.class, new ResourceLocation(Reference.MODID + "compactor"));
+		GameRegistry.registerTileEntity(TileEntityCompactor.class, new ResourceLocation(Reference.MODID + ":compactor"));
 	}
 }

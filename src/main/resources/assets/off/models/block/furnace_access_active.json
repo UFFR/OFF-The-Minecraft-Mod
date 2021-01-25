@@ -1,0 +1,8 @@
+{
+	"parent": "block/orientable",
+	"textures": {
+		"front": "off:blocks/furnace_access_active",
+		"top": "off:blocks/bricks_metal",
+		"side": "off:blocks/bricks_metal"
+	}
+}

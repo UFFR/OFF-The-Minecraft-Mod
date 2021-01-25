@@ -1,10 +1,12 @@
 package com.off.blocks.machines;
 
+import java.util.List;
 import java.util.Random;
 
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.util.ItemLore;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -14,6 +16,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -179,5 +182,11 @@ public class BlockHatch extends BlockContainer
 	public boolean isBurning()
 	{
 		return isBurning;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced)
+	{
+		tooltip.add(ItemLore.loreAll[14]);
 	}
 }

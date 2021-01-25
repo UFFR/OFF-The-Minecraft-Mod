@@ -45,33 +45,20 @@ public class BlockSpecial extends Block
 	public BlockRenderLayer getBlockLayer()
 	{
 		if (this == ModBlocks.VOID_TREE_LEAVES)
-		{
 			return BlockRenderLayer.CUTOUT;
-		}
 		else
-		{
 			return BlockRenderLayer.SOLID;
-		}
 	}
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
 	{
 		if (this == ModBlocks.VOID_TREE_LEAVES)
-		{
 			return false;
-		}
 		else
-		{
 			return true;
-		}
 	}
 
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
-	
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{

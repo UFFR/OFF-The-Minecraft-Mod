@@ -16,14 +16,16 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		if (ID == Reference.GUI_COMPACTOR) return new ContainerCompactor(player.inventory, (TileEntityCompactor)world.getTileEntity(new BlockPos(x, y, z)));
+		if (ID == Reference.GUI_COMPACTOR)
+			return new ContainerCompactor(player.inventory, (TileEntityCompactor)world.getTileEntity(new BlockPos(x, y, z)));
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		if (ID == Reference.GUI_COMPACTOR) return new GuiCompactor(player.inventory, (TileEntityCompactor)world.getTileEntity(new BlockPos(x, y, z)));
+		if (ID == Reference.GUI_COMPACTOR)
+			return new GuiCompactor(player.inventory, (TileEntityCompactor)world.getTileEntity(new BlockPos(x, y, z)));
 		return null;
 	}
 

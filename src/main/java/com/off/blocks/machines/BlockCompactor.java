@@ -61,7 +61,19 @@ public class BlockCompactor extends BlockContainer
 	{
 		return new TileEntityCompactor();
 	}
+	
+	@Override
+	public boolean hasTileEntity()
+	{
+		return true;
+	}
 
+	@Override
+	public boolean hasTileEntity(IBlockState state)
+	{
+		return true;
+	}
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
@@ -99,9 +111,13 @@ public class BlockCompactor extends BlockContainer
 		Boolean blockState = worldIn.getBlockState(pos).getValue(ACTIVE);
 		
 		if (isActive != blockState)
-			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, true));
-		else if (!isActive != blockState)
+		{
 			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, false));
+		}
+		else if (!isActive != blockState)
+		{
+			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, true));
+		}
 		
 		keepInventory = false;
 		
@@ -116,13 +132,7 @@ public class BlockCompactor extends BlockContainer
 	{
 		if (!keepInventory)
 		{
-			TileEntity tileEntity = worldIn.getTileEntity(pos);
-			
-			if (tileEntity instanceof TileEntityCompactor)
-			{
-				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) worldIn.getTileEntity(pos));
-				worldIn.updateComparatorOutputLevel(pos, this);
-			}
+			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) worldIn.getTileEntity(pos));
 		}
 		super.breakBlock(worldIn, pos, state);
 	}
@@ -163,11 +173,6 @@ public class BlockCompactor extends BlockContainer
 		}
 	}
 	
-	public TileEntity createTileEntity(World worldIn, int meta)
-	{
-		return new TileEntityCompactor();
-	}
-
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
@@ -219,8 +224,8 @@ public class BlockCompactor extends BlockContainer
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		//boolean active = (meta & 1) == 1 ? true : false;
-		//meta = meta >> 1;
+		boolean active = (meta & 1) == 1 ? true : false;
+		meta = meta >> 1;
 		EnumFacing enumFacing = EnumFacing.getFront(meta);
 		
 		if (enumFacing.getAxis() == EnumFacing.Axis.Y)
@@ -228,26 +233,20 @@ public class BlockCompactor extends BlockContainer
 			enumFacing = EnumFacing.NORTH;
 		}
 		
-		return this.getDefaultState().withProperty(FACING, enumFacing);//.withProperty(ACTIVE, active);
+		return this.getDefaultState().withProperty(FACING, enumFacing).withProperty(ACTIVE, active);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		/*int meta = ((EnumFacing)state.getValue(FACING)).getIndex() << 1;
+		int meta = ((EnumFacing)state.getValue(FACING)).getIndex() << 1;
 		meta += state.getValue(ACTIVE) ? 1 : 0;
-		return meta;*/
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return meta;
+		//return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}
 	
 	public boolean isActive()
 	{
 		return isActive;
-	}
-	
-	@Override
-	public boolean hasTileEntity(IBlockState state)
-	{
-		return true;
 	}
 }

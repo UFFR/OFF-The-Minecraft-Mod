@@ -1,12 +1,14 @@
 package com.off.blocks.container;
 
 import com.off.inventory.CompactorRecipes;
+import com.off.inventory.SlotOutput;
 import com.off.tileentity.TileEntityCompactor;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,8 +27,8 @@ public class ContainerCompactor extends Container
 		this.tileEntity = tileEntity;
 		IItemHandler itemHandler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		
-		this.addSlotToContainer(new SlotItemHandler(itemHandler, 0, 57, 34));
-		this.addSlotToContainer(new SlotItemHandler(itemHandler, 1, 116, 34));
+		this.addSlotToContainer(new SlotItemHandler(itemHandler, 0, 56, 34));
+		this.addSlotToContainer(new SlotOutput(itemHandler, 1, 116, 35));
 		
 		for (int y = 0; y < 3; y++)
 		{
@@ -43,6 +45,13 @@ public class ContainerCompactor extends Container
 	}
 	
 	@Override
+	public void addListener(IContainerListener listener)
+	{
+		super.addListener(listener);
+		listener.sendAllWindowProperties(this, (IInventory) this.inventorySlots);
+	}
+	
+	@Override
 	public void detectAndSendChanges()
 	{
 		super.detectAndSendChanges();
@@ -51,8 +60,10 @@ public class ContainerCompactor extends Container
 		{
 			IContainerListener listener = (IContainerListener)this.listeners.get(i);
 			
-			if (this.processingTime != this.tileEntity.getField(0)) listener.sendWindowProperty(this, 0, this.tileEntity.getField(0));
-			if (this.totalTime != this.tileEntity.getField(1)) listener.sendWindowProperty(this, 1, this.tileEntity.getField(1));
+			if (this.processingTime != this.tileEntity.getField(0))
+				listener.sendWindowProperty(this, 0, this.tileEntity.getField(0));
+			if (this.totalTime != this.tileEntity.getField(1))
+				listener.sendWindowProperty(this, 1, this.tileEntity.getField(1));
 		}
 		
 		this.processingTime = tileEntity.getField(0);
@@ -83,25 +94,24 @@ public class ContainerCompactor extends Container
 			ItemStack itemStack2 = slot1.getStack();
 			itemStack1 = itemStack2.copy();
 			
-			if (index == 3)
+			if (index == 1)
 			{
-				if (!this.mergeItemStack(itemStack2, 4, 40, true)) return ItemStack.EMPTY;
+				if (!this.mergeItemStack(itemStack2, 4, 40, true))
+					return ItemStack.EMPTY;
 				slot1.onSlotChange(itemStack2, itemStack1);
 			}
-			else if (index != 2 && index != 1 && index != 0)
+			else if (index != 0)
 			{
-				//Slot slot2 = (Slot)this.inventorySlots.get(index + 1);
-				
-				CompactorRecipes.getInstance();
 				if (!(CompactorRecipes.getOutput(itemStack2) == null))
 				{
-					if (!this.mergeItemStack(itemStack2, 0, 2, false))
+					if (!this.mergeItemStack(itemStack2, 0, 1, false))
 					{
 						return ItemStack.EMPTY;
 					}
-					else if (index >= 4 && index < 31)
+					else if (index >= 2 && index < 29)
 					{
-						if (!this.mergeItemStack(itemStack2, 2, 3, false)) return ItemStack.EMPTY;
+						if (!this.mergeItemStack(itemStack2, 2, 3, false))
+							return ItemStack.EMPTY;
 					}
 					else if (index >= 31 && index < 40 && !this.mergeItemStack(itemStack2, 4, 31, false))
 					{
@@ -123,8 +133,9 @@ public class ContainerCompactor extends Container
 				slot1.onSlotChanged();
 			}
 			
-			if (itemStack2.getCount() == itemStack1.getCount()) return ItemStack.EMPTY;
-			slot1.onTake(playerIn, itemStack2);
+			if (itemStack2.getCount() == itemStack1.getCount())
+				return ItemStack.EMPTY;
+			//slot1.onTake(playerIn, itemStack2);
 		}
 		return itemStack1;
 	}

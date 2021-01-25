@@ -78,6 +78,9 @@ public class ItemBase extends Item
 		if (this == ModItems.INGOT_METAL || this == ModItems.NUGGET_METAL || this == ModItems.NUGGET_METAL_IMPURE || this == ModItems.FRAGMENT_POOR_METAL || this == ModItems.POOR_METAL)
 		{
 			tooltip.add(ItemLore.elementLore[1]);
+		}
+		if (this == ModItems.INGOT_METAL || this == ModItems.NUGGET_METAL)
+		{
 			tooltip.add(ItemLore.loreAll[5]);
 		}
 		if (this == ModItems.INGOT_PLASTIC || this == ModItems.NUGGET_PLASTIC_RAW || this == ModItems.INGOT_PLASTIC_RAW)

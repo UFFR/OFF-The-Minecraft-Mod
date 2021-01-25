@@ -8,6 +8,5 @@
   	"burning=true,facing=south": { "model": "off:furnace_access_active", "y": 180 },
   	"burning=true,facing=west": { "model": "off:furnace_access_active", "y": 270 },
   	"burning=true,facing=east": { "model": "off:furnace_access_active", "y": 90 }
-  	
     }
 }
