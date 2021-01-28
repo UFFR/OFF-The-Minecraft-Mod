@@ -71,6 +71,6 @@ public class BlockCrate extends Block
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		tooltip.add(ItemLore.loreAll[1]);
+		tooltip.add(ItemLore.loreMisc[2]);
 	}
 }

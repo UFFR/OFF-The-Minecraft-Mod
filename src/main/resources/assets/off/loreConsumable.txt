@@ -1,0 +1,4 @@
+Restores a moderate amount of HP
+Restores a large amount of HP
+Restores a moderate amount of CP
+Restores a large amount of CP

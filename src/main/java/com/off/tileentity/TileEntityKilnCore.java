@@ -89,7 +89,7 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
-		this.heat = compound.getLong("heatTime");
+		TileEntityKilnCore.heat = compound.getLong("heatTime");
 		this.progress = compound.getShort("cookTime");
 		if (compound.hasKey("inventory"))
 		{

@@ -10,28 +10,43 @@ import net.minecraft.item.ItemStack;
 
 public class CompactorRecipes
 {
-    private static HashMap<ComparableStack, CompactorRecipe> recipeList = new HashMap<>();
+    //private static HashMap<ComparableStack, CompactorRecipe> recipeList = new HashMap<>();
+	private static HashMap<Item, Item> recipeList = new HashMap<Item, Item>();
     public static void register()
     {
-        addCompactorRecipe(new ItemStack(ModItems.INGOT_PLASTIC_RAW), new ItemStack(ModItems.INGOT_PLASTIC), 1.0F);
-        addCompactorRecipe(new ItemStack(ModItems.INGOT_PLASTIC), new ItemStack(ModItems.PLATE_PLASTIC), 1.0F);
-        addCompactorRecipe(new ItemStack(ModItems.INGOT_METAL), new ItemStack(ModItems.PLATE_METAL), 1.0F);
+        addCompactorRecipe(ModItems.INGOT_PLASTIC_RAW, ModItems.INGOT_PLASTIC);
+        addCompactorRecipe(ModItems.INGOT_PLASTIC, ModItems.PLATE_PLASTIC);
+        addCompactorRecipe(ModItems.INGOT_METAL, ModItems.PLATE_METAL);
     }
     
-    public static void addCompactorRecipe(ItemStack input, ItemStack output, Float exp)
+    public static void addCompactorRecipe(Item input, Item output)
     {
         //if (getCompactorResult(input) != ItemStack.EMPTY) return;
         //this.recipeList.put(input, output, null);
-        recipeList.put(new ComparableStack(input), new CompactorRecipe(output));
+    	
+        //recipeList.put(new ComparableStack(input), new CompactorRecipe(output));
+    	recipeList.put(input, output);
     }
         
-    public static CompactorRecipe getOutput(ItemStack stack)
+    public static CompactorRecipe getOutput(Item input)
     {
-        if (stack == null)
+    	System.out.println("[CompactorRecipes]: Input input identified as: " + input.getRegistryName().toString());
+        if (input == null || input.getRegistryName() == null)
+        {
+        	System.out.println("[CompactorRecipes]: Input input empty/null");
             return null;
+        }
         
-        ComparableStack comp = new ComparableStack(stack);
-        return CompactorRecipes.recipeList.get(comp);
+        if (!recipeList.containsKey(input))
+        {
+        	System.out.println("[CompactorRecipes]: No recipe output");
+        	return null;
+        }
+        // TODO remove or comment out debugging stuff once errors fixed
+        //ComparableStack comp = new ComparableStack(input);
+        System.out.println("[CompactorRecipes]: Output input: " + recipeList.get(input).getRegistryName().toString());
+        //return CompactorRecipes.recipeList.get(comp);
+        return new CompactorRecipe(new ItemStack(recipeList.get(input)));
     }
     
     public static class CompactorRecipe

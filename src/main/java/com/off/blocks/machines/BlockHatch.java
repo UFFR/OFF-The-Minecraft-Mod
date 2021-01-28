@@ -3,9 +3,9 @@ package com.off.blocks.machines;
 import java.util.List;
 import java.util.Random;
 
-import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.tileentity.TileEntityKilnHatch;
 import com.off.util.ItemLore;
 
 import net.minecraft.block.BlockContainer;
@@ -13,18 +13,17 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -36,13 +35,12 @@ import net.minecraft.world.World;
 public class BlockHatch extends BlockContainer
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	//public static final PropertyBool BURNING = PropertyBool.create("BURNING");
+	public static final PropertyBool BURNING = PropertyBool.create("burning");
 	
 	private final boolean isBurning;
 	
 	public BlockHatch(String name)
 	{
-		// TODO Readd burning state
 		super(Material.IRON);
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -50,10 +48,28 @@ public class BlockHatch extends BlockContainer
 		setHardness(ModBlocks.defaultHardness);
 		setResistance(ModBlocks.defaultResistance);
 		setHarvestLevel(ModBlocks.defaultToolType, ModBlocks.defaultHarvestLevel);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));//.withProperty(BURNING, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
 		this.isBurning = false;
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta)
+	{
+		return new TileEntityKilnHatch();
+	}
+	
+	@Override
+	public boolean hasTileEntity()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state)
+	{
+		return true;
 	}
 
 	@Override
@@ -63,49 +79,60 @@ public class BlockHatch extends BlockContainer
 	}
 	
 	@Override
-	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		return new ItemStack(ModBlocks.FURNACE_ACCESS);
-	}
-	
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-	{
-		if (!worldIn.isRemote)
+		if (worldIn.isRemote)
 		{
-			worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
-			/*if (stack.hasDisplayName())
-			{
-				TileEntity tileEntity = worldIn.getTileEntity(pos);
-				
-				if (tileEntity instanceof TileEntityKilnHatch)
-				{
-					((TileEntityKilnHatch)tileEntity).setCustomName(stack.getDisplayName());
-				}
-			}*/
+			return true;
+		}
+		else if (!playerIn.isSneaking())
+		{
+			//TileEntityKilnHatch tileEntity = (TileEntityKilnHatch) worldIn.getTileEntity(pos);
+			// TODO add gui code here
+			
+			
+			
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	
-	public void updateBlockState(boolean isBurning, World worldIn, BlockPos pos)
+	public static void updateBlockState(boolean isBurning, World worldIn, BlockPos pos)
 	{
-		// TODO Readd burning properties
 		EnumFacing facing = worldIn.getBlockState(pos).getValue(FACING);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		//Boolean blockState = worldIn.getBlockState(pos).getValue(BURNING);
 		
-		/*if (isBurning!= blockState)
-			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, true));
+		Boolean blockState = worldIn.getBlockState(pos).getValue(BURNING);
+		
+		if (isBurning != blockState)
+		{
+			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, false));
+		}
 		else if (!isBurning != blockState)
-			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, false));*/
-	
+		{
+			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, true));
+		}
+		
+		
+		
 		if (tileEntity != null)
 		{
 			tileEntity.validate();
 			worldIn.setTileEntity(pos, tileEntity);
 		}
 	}
+
+	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	{
+		this.setDefaultFacing(worldIn, pos, state);
+	}
 	
-	public void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
+	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
 	{
 		if (!worldIn.isRemote)
 		{
@@ -123,48 +150,37 @@ public class BlockHatch extends BlockContainer
 		}
 	}
 	
-	@Override
-	protected BlockStateContainer createBlockState()
+	public static void setState(boolean burning, World worldIn, BlockPos pos)
 	{
-		// TODO Readd burning state
-		return new BlockStateContainer(this, new IProperty[] {/*BURNING,*/ FACING});
+		TileEntity tileEntity = worldIn.getTileEntity(pos);
+		
+		if (tileEntity != null)
+		{
+			tileEntity.validate();
+			worldIn.setTileEntity(pos, tileEntity);
+		}
 	}
 	
+	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
+	{
+		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	{
+		if (!worldIn.isRemote)
+		{
+			worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+		}
+	}
+		
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state)
 	{
 		return EnumBlockRenderType.MODEL;
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		boolean burning = (meta & 1) == 1 ? true : false;
-		meta = meta >> 1;
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
-		
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-		{
-			enumfacing = EnumFacing.NORTH;
-		}
-		// TODO Readd burning state
-		return this.getDefaultState().withProperty(FACING, enumfacing);//.withProperty(BURNING, burning);
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		// TODO Readd burning state
-		int meta = ((EnumFacing)state.getValue(FACING)).getIndex() << 1;
-		//meta += state.getValue(BURNING) ? 1 : 0;
-		return meta;
 	}
 	
 	@Override
@@ -179,6 +195,35 @@ public class BlockHatch extends BlockContainer
 		return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
 	}
 	
+	@Override
+	protected BlockStateContainer createBlockState()
+	{
+		return new BlockStateContainer(this, new IProperty[] {BURNING, FACING});
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta)
+	{
+		boolean burning = (meta & 1) == 1 ? true : false;
+		meta = meta >> 1;
+		EnumFacing enumfacing = EnumFacing.getFront(meta);
+		
+		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+		{
+			enumfacing = EnumFacing.NORTH;
+		}
+
+		return this.getDefaultState().withProperty(FACING, enumfacing).withProperty(BURNING, burning);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		int meta = ((EnumFacing)state.getValue(FACING)).getIndex() << 1;
+		meta += state.getValue(BURNING) ? 1 : 0;
+		return meta;
+	}
+	
 	public boolean isBurning()
 	{
 		return isBurning;
@@ -187,6 +232,6 @@ public class BlockHatch extends BlockContainer
 	@Override
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced)
 	{
-		tooltip.add(ItemLore.loreAll[14]);
+		tooltip.add(ItemLore.loreMachine[0]);
 	}
 }

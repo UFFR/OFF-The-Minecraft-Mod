@@ -16,6 +16,7 @@
         },
         "W":
         {
+        	"type": "forge:ore_dict",
         	"ore": "plankWood"
         },
         "S":

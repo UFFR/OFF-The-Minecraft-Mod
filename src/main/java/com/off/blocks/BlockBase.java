@@ -36,28 +36,28 @@ public class BlockBase extends Block
 	{
 		if (this == ModBlocks.ORE_METAL || this == ModBlocks.BLOCK_METAL)
 		{
-			tooltip.add(ItemLore.loreAll[5]);
+			tooltip.add(ItemLore.loreMaterial[0]);
 		}
 		if (this == ModBlocks.HEAT_SHIELDING || this == ModBlocks.FURNACE_CORE || this == ModBlocks.FURNACE_CORE_COMPONENT)
 		{
-			tooltip.add(ItemLore.loreAll[14]);
+			tooltip.add(ItemLore.loreMachine[0]);
 		}
 		if (this == ModBlocks.BRICKS_METAL)
 		{
-			tooltip.add(ItemLore.loreAll[11]);
-			tooltip.add(ItemLore.loreAll[12]);
+			tooltip.add(ItemLore.loreBlock[1]);
+			tooltip.add(ItemLore.loreBlock[2]);
 		}
 		if (this == ModBlocks.BRICKS)
 		{
-			tooltip.add(ItemLore.loreAll[13]);
+			tooltip.add(ItemLore.loreBlock[3]);
 		}
 		if (this == ModBlocks.DIRT)
 		{
-			tooltip.add(ItemLore.loreAll[6]);
+			tooltip.add(ItemLore.loreMaterial[0]);
 		}
 		if (this == ModBlocks.ROCK)
 		{
-			tooltip.add(ItemLore.loreAll[28]);
+			tooltip.add(ItemLore.loreBlock[0]);
 		}
 	}
 }

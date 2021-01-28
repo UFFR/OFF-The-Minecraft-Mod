@@ -37,7 +37,7 @@ public class BlockPillar extends BlockRotatedPillar
 	{
 		if (this == ModBlocks.VOID_TREE_STEM)
 		{
-			tooltip.add(ItemLore.loreAll[24]);
+			tooltip.add(ItemLore.loreBlock[4]);
 		}
 	}
 	

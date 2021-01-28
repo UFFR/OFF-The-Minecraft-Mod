@@ -45,18 +45,26 @@ public class BlockSpecial extends Block
 	public BlockRenderLayer getBlockLayer()
 	{
 		if (this == ModBlocks.VOID_TREE_LEAVES)
+		{
 			return BlockRenderLayer.CUTOUT;
+		}
 		else
+		{
 			return BlockRenderLayer.SOLID;
+		}
 	}
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
 	{
 		if (this == ModBlocks.VOID_TREE_LEAVES)
+		{
 			return false;
+		}
 		else
+		{
 			return true;
+		}
 	}
 
 	@Override
@@ -64,12 +72,12 @@ public class BlockSpecial extends Block
 	{
 		if (this == ModBlocks.VOID_TREE_LEAVES || this == ModBlocks.VOID_TREE_PLANKS)
 		{
-			tooltip.add(ItemLore.loreAll[24]);
+			tooltip.add(ItemLore.loreBlock[4]);
 		}
 		if (this == ModBlocks.CUBE_RED || this == ModBlocks.CUBE_YELLOW)
 		{
-			tooltip.add(ItemLore.loreAll[30]);
-			tooltip.add(ItemLore.loreAll[31]);
+			tooltip.add(ItemLore.loreBlock[6]);
+			tooltip.add(ItemLore.loreBlock[7]);
 		}
 	}
 	

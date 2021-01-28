@@ -69,7 +69,7 @@ public class ItemBase extends Item
 
 		if (this == ModItems.LOGO)
 		{
-			tooltip.add(ItemLore.loreAll[17]);
+			tooltip.add(ItemLore.loreMisc[0]);
 		}
 		if (this == ModItems.SUGAR)
 		{
@@ -81,7 +81,7 @@ public class ItemBase extends Item
 		}
 		if (this == ModItems.INGOT_METAL || this == ModItems.NUGGET_METAL)
 		{
-			tooltip.add(ItemLore.loreAll[5]);
+			tooltip.add(ItemLore.loreMaterial[0]);
 		}
 		if (this == ModItems.INGOT_PLASTIC || this == ModItems.NUGGET_PLASTIC_RAW || this == ModItems.INGOT_PLASTIC_RAW)
 		{
@@ -89,7 +89,7 @@ public class ItemBase extends Item
 		}
 		if (this == ModItems.NUGGET_PLASTIC_RAW || this == ModItems.INGOT_PLASTIC_RAW)
 		{
-			tooltip.add(ItemLore.loreAll[18]);
+			tooltip.add(ItemLore.loreMaterial[2]);
 		}
 		if (this == ModItems.MEAT || this == ModItems.MEAT_RAW)
 		{
@@ -97,79 +97,79 @@ public class ItemBase extends Item
 		}
 		if (this == ModItems.MEAT_RAW)
 		{
-			tooltip.add(ItemLore.loreAll[19]);
+			tooltip.add(ItemLore.loreMaterial[3]);
 		}
 		if (this == ModItems.MEAT)
 		{
-			tooltip.add(ItemLore.loreAll[20]);
+			tooltip.add(ItemLore.loreMaterial[4]);
 		}
 		if (this == ModItems.MEAT_METAL)
 		{
-			tooltip.add(ItemLore.loreAll[21]);
+			tooltip.add(ItemLore.loreMaterial[5]);
 		}
 		if (this == ModItems.NUGGET_METAL_IMPURE)
 		{
-			tooltip.add(ItemLore.loreAll[22]);
+			tooltip.add(ItemLore.loreMaterial[6]);
 		}
 		if (this == ModItems.BOTTLE_LARGE)
 		{
-			tooltip.add(ItemLore.loreAll[0]);
+			tooltip.add(ItemLore.loreMisc[1]);
 		}
 		if (this == ModItems.BOTTLE_MEAT)
 		{
-			tooltip.add(ItemLore.loreAll[2]);
-			tooltip.add(ItemLore.loreAll[1]);
+			tooltip.add(ItemLore.loreMisc[3]);
+			tooltip.add(ItemLore.loreMisc[2]);
 		}
 		if (this == ModItems.BOTTLE_PLASTIC)
 		{
-			tooltip.add(ItemLore.loreAll[4]);
-			tooltip.add(ItemLore.loreAll[1]);
+			tooltip.add(ItemLore.loreMisc[5]);
+			tooltip.add(ItemLore.loreMisc[2]);
 		}
 		if (this == ModItems.BOTTLE_SMOKE)
 		{
-			tooltip.add(ItemLore.loreAll[3]);
-			tooltip.add(ItemLore.loreAll[1]);
+			tooltip.add(ItemLore.loreMisc[4]);
+			tooltip.add(ItemLore.loreMisc[2]);
 		}
 		if (this == ModItems.FLESH_SILVER)
 		{
-			tooltip.add(ItemLore.loreAll[9]);
+			tooltip.add(ItemLore.loreConsumable[2]);
 		}
 		if (this == ModItems.FLESH_GOLD)
 		{
-			tooltip.add(ItemLore.loreAll[10]);
+			tooltip.add(ItemLore.loreConsumable[3]);
 		}
 		if (this == ModItems.TICKET_LUCK)
 		{
-			tooltip.add(ItemLore.loreAll[7]);
+			tooltip.add(ItemLore.loreConsumable[0]);
 		}
 		if (this == ModItems.TICKET_FORTUNE)
 		{
-			tooltip.add(ItemLore.loreAll[8]);
+			tooltip.add(ItemLore.loreConsumable[1]);
 		}
 		if (this == ModItems.POOR_METAL || this == ModItems.FRAGMENT_POOR_METAL)
 		{
-			tooltip.add(ItemLore.loreAll[6]);
+			tooltip.add(ItemLore.loreMaterial[1]);
 		}
 		if (this == ModItems.SUGAR)
 		{
 			tooltip.add(ItemLore.elementLore[4]);
-			tooltip.add(ItemLore.loreAll[16]);
+			tooltip.add(ItemLore.loreMaterial[8]);
 		}
 		if (this == ModItems.FLESH_ELSEN)
 		{
-			tooltip.add(ItemLore.loreAll[26]);
+			tooltip.add(ItemLore.loreItem[1]);
 		}
 		if (this == ModItems.FLESH_ELSEN_BURNED)
 		{
-			tooltip.add(ItemLore.loreAll[15]);
+			tooltip.add(ItemLore.loreItem[2]);
 		}
 		if (this == ModItems.BOTTLE_SEALED)
 		{
-			tooltip.add(ItemLore.loreAll[27]);
+			tooltip.add(ItemLore.loreItem[0]);
 		}
 		if (this == ModItems.CROWBAR)
 		{
-			tooltip.add(ItemLore.loreAll[29]);
+			tooltip.add(ItemLore.loreItem[3]);
 		}
 	}
 }

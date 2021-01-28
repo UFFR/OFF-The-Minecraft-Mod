@@ -18,8 +18,8 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 {
 	private ItemStackHandler inventory;
 	private String customName;
-	private int processingTime;
-	private int totalTime = 200;
+	public int processingTime;
+	public int totalTime = 200;
 	
 	public TileEntityCompactor()
 	{
@@ -57,13 +57,6 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
-		/*super.writeToNBT(compound);
-		compound.setInteger("ProcessingTime", (short)this.processingTime);
-		compound.setInteger("TotalTime", (short)this.totalTime);
-		compound.setTag("Inventory", this.inventory.serializeNBT());
-		
-		if (this.hasCustomName()) compound.setString("CustomName", customName);
-		return compound;*/
 		compound.setShort("ProcessingTime", (short)processingTime);
 		compound.setTag("Inventory", inventory.serializeNBT());
 		return super.writeToNBT(compound);
@@ -72,15 +65,6 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
-		/*super.readFromNBT(compound);
-		this.inventory.deserializeNBT(compound.getCompoundTag("Inventory"));
-		this.processingTime = compound.getInteger("ProcessingTime");
-		this.totalTime = compound.getInteger("TotalTime");
-		
-		if (compound.hasKey("CustomName", 8))
-		{
-			this.setCustomName(compound.getString("CustomName"));
-		}*/
 		processingTime = compound.getShort("ProcessingTime");
 		if (compound.hasKey("Inventory"))
 		{
@@ -93,14 +77,16 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	{
 		if (inventory.getStackInSlot(0).isEmpty())
 		{
+			//System.out.println("[Compactor]: Input slot is empty");
 			return false;
 		}
 		else
 		{
-			CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(0));
+			CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(0).getItem());
 			
 			if (recipe == null)
 			{
+				//System.out.println("[Compactor]: Recipe is null");
 				return false;
 			}
 			else
@@ -109,10 +95,14 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 				
 				if (/*outputSlot.isEmpty()*/inventory.getStackInSlot(1).isEmpty())
 				{
+					//System.out.println("[Compactor]: Output slot is empty");
 					return true;
 				}
 				else if (/*outputSlot.isItemEqual(recipe.output)*/!inventory.getStackInSlot(1).isItemEqual(recipe.output))
 				{
+					System.out.println("[Compactor]: Output slot is not empty and is not the same as recipe output");
+					System.out.println("[Compactor]: Stack in output slot: " + inventory.getStackInSlot(1).getItem().getRegistryName());
+					System.out.println("[Compactor]: Recipe output: " + recipe.output.getDisplayName());
 					return false;
 				}
 				else if (/*outputSlot.getCount() < 64 && outputSlot.getCount() < outputSlot.getMaxStackSize()*/inventory.getStackInSlot(1).getCount() < inventory.getSlotLimit(1) && inventory.getStackInSlot(1).getCount() < inventory.getStackInSlot(1).getMaxStackSize())
@@ -170,25 +160,30 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 	{
 		if (canProcess())
 		{
-			CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(0));
-			
+			// TODO remove or comment out console printing when debugging is complete
+			// FIXME fix recipes, using console printing to see where code goes
+			CompactorRecipe recipe = CompactorRecipes.getOutput(inventory.getStackInSlot(0).getItem());
+			//System.out.println("[Compactor]: Input identified as: " + inventory.getStackInSlot(0).getDisplayName());
 			if (recipe == null)
 			{
+				System.out.println("[Compactor]: Recipe is null");
 				return;
 			}
 			
 			ItemStack itemStack = recipe.output;
-			
+			System.out.println("[Compactor]: Recipe output identified as: " + itemStack.getDisplayName());
 			if (inventory.getStackInSlot(1).isEmpty())
 			{
+				System.out.println("[Compactor]: Output slot was empty, setting new item stack...");
 				inventory.setStackInSlot(1, itemStack.copy());
 			}
 			else if (inventory.getStackInSlot(1).isItemEqual(itemStack))
 			{
+				System.out.println("[Compactor]: Output slot is the same as recipe output, growing by 1...");
 				inventory.getStackInSlot(1).grow(itemStack.getCount());
 			}
 			
-			for (int i = 1; i < 2; i++)
+			for (int i = 1; i < 1; i++)
 			{
 				if (inventory.getStackInSlot(i).isEmpty())
 				{
@@ -213,10 +208,12 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 		{
 			if (canProcess())
 			{
+				//System.out.println("[Compactor]: Is able to process");
 				processingTime++;
 				
 				if (this.processingTime == this.totalTime)
 				{
+					//System.out.println("[Compactor]: Processing item...");
 					this.processingTime = 0;
 					this.processItem();
 					dirty = true;
@@ -235,6 +232,7 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 				
 				if (trigger)
 				{
+					//System.out.println("[Compactor]: Is dirty and updating block state");
 					dirty = true;
 					BlockCompactor.updateBlockState(canProcess(), this.world, pos);
 				}

@@ -1,6 +1,6 @@
 package com.off.inventory.gui;
 
-import com.off.blocks.container.ContainerCompactor;
+import com.off.inventory.container.ContainerCompactor;
 import com.off.tileentity.TileEntityCompactor;
 import com.off.util.Reference;
 

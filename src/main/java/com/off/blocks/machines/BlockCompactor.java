@@ -1,11 +1,13 @@
 package com.off.blocks.machines;
 
+import java.util.List;
 import java.util.Random;
 
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.tileentity.TileEntityCompactor;
+import com.off.util.ItemLore;
 import com.off.util.Reference;
 
 import net.minecraft.block.BlockContainer;
@@ -17,6 +19,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -159,7 +162,6 @@ public class BlockCompactor extends BlockContainer
 			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
 		}
-
 	}
 
 	public static void setState(boolean active, World worldIn, BlockPos pos)
@@ -218,7 +220,7 @@ public class BlockCompactor extends BlockContainer
 	@Override
 	protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {ACTIVE,FACING});
+		return new BlockStateContainer(this, new IProperty[] {ACTIVE, FACING});
 	}
 	
 	@Override
@@ -242,11 +244,16 @@ public class BlockCompactor extends BlockContainer
 		int meta = ((EnumFacing)state.getValue(FACING)).getIndex() << 1;
 		meta += state.getValue(ACTIVE) ? 1 : 0;
 		return meta;
-		//return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}
 	
 	public boolean isActive()
 	{
 		return isActive;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced)
+	{
+		tooltip.add(ItemLore.loreMachine[1]);
 	}
 }

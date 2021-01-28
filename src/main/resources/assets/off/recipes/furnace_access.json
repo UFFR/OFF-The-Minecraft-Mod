@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "I I",
+        "SHS",
+        "ISI"
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "off:ingot_metal"
+        },
+        "H":
+        {
+        	"item": "minecraft:hopper"
+        },
+        "S":
+        {
+        	"item": "off:heat_shielding"
+        }
+    },
+    
+    "result":
+    {
+        "item": "off:furnace_access",
+        "count": 1
+    }
+}
