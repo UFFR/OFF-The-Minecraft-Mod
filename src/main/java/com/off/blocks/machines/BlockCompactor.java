@@ -22,8 +22,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -111,16 +109,16 @@ public class BlockCompactor extends BlockContainer
 		EnumFacing facing = worldIn.getBlockState(pos).getValue(FACING);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		keepInventory = true;
-		Boolean blockState = worldIn.getBlockState(pos).getValue(ACTIVE);
-		
-		if (isActive != blockState)
+		//Boolean blockState = worldIn.getBlockState(pos).getValue(ACTIVE);
+		worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, isActive));
+		/*if (isActive != blockState)
 		{
 			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, false));
 		}
 		else if (!isActive != blockState)
 		{
 			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, true));
-		}
+		}*/
 		
 		keepInventory = false;
 		
@@ -135,7 +133,11 @@ public class BlockCompactor extends BlockContainer
 	{
 		if (!keepInventory)
 		{
-			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) worldIn.getTileEntity(pos));
+			final TileEntity tileEntity = worldIn.getTileEntity(pos);
+			if (tileEntity instanceof TileEntityCompactor)
+			{
+				worldIn.updateComparatorOutputLevel(pos, this);
+			}
 		}
 		super.breakBlock(worldIn, pos, state);
 	}

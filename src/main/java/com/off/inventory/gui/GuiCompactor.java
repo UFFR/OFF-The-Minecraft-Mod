@@ -4,7 +4,6 @@ import com.off.inventory.container.ContainerCompactor;
 import com.off.tileentity.TileEntityCompactor;
 import com.off.util.Reference;
 
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -44,11 +43,11 @@ public class GuiCompactor extends GuiContainer
 		// Active icon
 		if (TileEntityCompactor.isActive(tileEntityCompactor))
 		{
-			Gui.drawModalRectWithCustomSizedTexture(49, 50, 176, 12, 32, 18, 32, 18);
+			this.drawTexturedModalRect(this.guiLeft + 48, this.guiTop + 50, 176, 17, 32, 16);
 		}
 		// Arrow
 		int l = getProgressScaled(24);
-		this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 34, 176, 14, l + 1, 16);
+		this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 34, 176, 0, l, 17);
 	}
 	
 	@Override

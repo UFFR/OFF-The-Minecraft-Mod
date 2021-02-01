@@ -3,7 +3,6 @@ package com.off.inventory;
 import java.util.HashMap;
 
 import com.off.init.ModItems;
-import com.off.inventory.Common.ComparableStack;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,21 +29,21 @@ public class CompactorRecipes
         
     public static CompactorRecipe getOutput(Item input)
     {
-    	System.out.println("[CompactorRecipes]: Input input identified as: " + input.getRegistryName().toString());
+    	//System.out.println("[CompactorRecipes]: Input input identified as: " + input.getRegistryName().toString());
         if (input == null || input.getRegistryName() == null)
         {
-        	System.out.println("[CompactorRecipes]: Input input empty/null");
+        	//System.out.println("[CompactorRecipes]: Input input empty/null");
             return null;
         }
         
         if (!recipeList.containsKey(input))
         {
-        	System.out.println("[CompactorRecipes]: No recipe output");
+        	//System.out.println("[CompactorRecipes]: No recipe output");
         	return null;
         }
         // TODO remove or comment out debugging stuff once errors fixed
         //ComparableStack comp = new ComparableStack(input);
-        System.out.println("[CompactorRecipes]: Output input: " + recipeList.get(input).getRegistryName().toString());
+        //System.out.println("[CompactorRecipes]: Output input: " + recipeList.get(input).getRegistryName().toString());
         //return CompactorRecipes.recipeList.get(comp);
         return new CompactorRecipe(new ItemStack(recipeList.get(input)));
     }

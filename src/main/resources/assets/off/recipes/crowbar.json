@@ -3,7 +3,7 @@
     
     "pattern":
     [
-        "II",
+        "PI",
         " I",
         " I"
     ],
@@ -13,6 +13,10 @@
         "I":
         {
             "item": "off:ingot_metal"
+        },
+        "P":
+        {
+        	"item": "off:plate_metal"
         }
     },
     

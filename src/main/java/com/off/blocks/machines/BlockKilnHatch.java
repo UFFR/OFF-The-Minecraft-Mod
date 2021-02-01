@@ -32,14 +32,14 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockHatch extends BlockContainer
+public class BlockKilnHatch extends BlockContainer
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool BURNING = PropertyBool.create("burning");
 	
 	private final boolean isBurning;
 	
-	public BlockHatch(String name)
+	public BlockKilnHatch(String name)
 	{
 		super(Material.IRON);
 		setUnlocalizedName(name);

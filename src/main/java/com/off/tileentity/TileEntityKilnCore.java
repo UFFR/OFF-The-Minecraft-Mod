@@ -1,5 +1,7 @@
 package com.off.tileentity;
 
+import com.off.init.ModBlocks;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -7,6 +9,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.MutableBlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -24,12 +29,13 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 	public long progress = 0;
 	public boolean active = false;
 	public static long heat = 20; // Room temperature
-	public float maxHeat = 1500.0F; // Anything hotter would be a bit unrealistic for a furnace
+	public float maxHeat = 1500.0F; // Anything hotter would be a bit unrealistic for a simple furnace/kiln
 	public int maxFuel = 2000; // Open to change during testing
 	public ItemStackHandler inventory;
 	public ICapabilityProvider dropProvider;
-	public static int processingTime = (int) (-0.111111*heat + 216.666667); // Base level (200), changes with temperature, uses typical linear function
+	public static int processingTime = (int) (-0.111111*heat + 216.666667); // Base level (200), changes with temperature, uses typical linear function, might change to a exponential or quadratic depending on how it goes
 	
+	public static String errorPoint;
 	private String customName;
 	
 	public TileEntityKilnCore()
@@ -57,6 +63,185 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 				return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory) : null;
 			}
 		};
+	}
+	
+	// Check the blocks around the structure
+	public boolean isStructureValid(World worldIn)
+	{
+		MutableBlockPos mPos = new BlockPos.MutableBlockPos();
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+		errorPoint = null;
+		// Components
+		for (int i = 1; i <= 3; i++)
+		{
+			switch(i)
+			{
+				// Check outer shell
+				case 1:
+					// Front and back
+					for (int x1 = -5; x1 <= 1; x1++)
+					{
+						for (int y1 = -5; y1 <= 1; y1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z + 3)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, Z+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z - 3)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, Z-]";
+								return false;
+							}
+						}
+					}
+					// Top and bottom
+					for (int x1 = -5; x1 <= 1; x1++)
+					{
+						for (int z1 = -5; z1 <= 1; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + 3, z + z1)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, TOP]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y - 3, z + z1)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, BOTTOM]";
+								return false;
+							}
+						}
+					}
+					// Left and right
+					for (int y1 = -5; y1 <= 1; y1++)
+					{
+						for (int z1 = -5; z1 <= 1; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + 3, y + y1, z + z1)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, X+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x - 3, y + y1, z + z1)).getBlock() != ModBlocks.BRICKS_METAL)
+							{
+								errorPoint = "[OUTER SHELL, X-]";
+								return false;
+							}
+						}
+					}
+					break;
+				// Heat shielding
+				case 2:
+					// Front and back
+					for (int x1 = -4; x1 <= 2; x1++)
+					{
+						for (int y1 = -4; y1 <= 2; y1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z + 2)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, Z+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z - 2)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, Z-]";
+								return false;
+							}
+						}
+					}
+					// Top and bottom
+					for (int x1 = -4; x1 <= 2; x1++)
+					{
+						for (int z1 = -4; z1 <= 2; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + 2, z + z1)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, TOP]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y - 2, z + z1)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, BOTTOM]";
+								return false;
+							}
+						}
+					}
+					// Left and right
+					for (int y1 = -4; y1 <= 2; y1++)
+					{
+						for (int z1 = -4; z1 <= 2; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + 2, y + y1, z + z1)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, X+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x - 2, y + y1, z + z1)).getBlock() != ModBlocks.HEAT_SHIELDING)
+							{
+								errorPoint = "[HEAT SHIELDING, X-]";
+								return false;
+							}
+						}
+					}
+					break;
+				// Core components
+				case 3:
+					// Front and back
+					for (int x1 = -3; x1 <= 3; x1++)
+					{
+						for (int y1 = -3; y1 <= 3; y1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z + 1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, Z+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + y1, z - 1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, Z-]";
+								return false;
+							}
+						}
+					}
+					// Top and bottom
+					for (int x1 = -3; x1 <= 3; x1++)
+					{
+						for (int z1 = -3; z1 <= 3; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y + 1, z + z1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, TOP]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x + x1, y - 1, z + z1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, BOTTOM]";
+								return false;
+							}
+						}
+					}
+					// Left and right
+					for (int y1 = -3; y1 <= 3; y1++)
+					{
+						for (int z1 = -3; z1 <= 3; z1++)
+						{
+							if (worldIn.getBlockState(mPos.setPos(x + 1, y + y1, z + z1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, X+]";
+								return false;
+							}
+							if (worldIn.getBlockState(mPos.setPos(x - 1, y + y1, z + z1)).getBlock() != ModBlocks.FURNACE_CORE_COMPONENT)
+							{
+								errorPoint = "[CORE COMPONENTS, X-]";
+								return false;
+							}
+						}
+					}
+			}
+		}
+		return true;
 	}
 	
 	public boolean hasCustomInventoryName()

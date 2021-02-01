@@ -11,7 +11,7 @@ import com.off.blocks.BlockPillar;
 import com.off.blocks.BlockSpecial;
 import com.off.blocks.BlockStair;
 import com.off.blocks.machines.BlockCompactor;
-import com.off.blocks.machines.BlockHatch;
+import com.off.blocks.machines.BlockKilnHatch;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -75,7 +75,7 @@ public class ModBlocks
 	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Basically "smooth stone", you can use it for decoration of some sort I suppose
 	public static final Block FURNACE_CORE = new BlockBase("furnace_core", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Main block of the furnace
 	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Sort of an "extension" of the core
-	public static final Block FURNACE_ACCESS = new BlockHatch("furnace_access"); // Access port to core
+	public static final Block FURNACE_ACCESS = new BlockKilnHatch("furnace_access"); // Access port to core
 
 	// Non-exclusive
 	public static final Block BRICKS_METAL = new BlockBase("bricks_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Outer casing, can also be used as a decent building material
