@@ -1,6 +1,6 @@
 package com.off.tileentity;
 
-import com.off.blocks.machines.BlockKilnHatch;
+import com.off.blocks.machines.MachineKilnHatch;
 
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.tileentity.TileEntity;
@@ -11,86 +11,73 @@ import net.minecraft.world.World;
 
 public class TileEntityKilnHatch extends TileEntity implements ITickable
 {
-	private BlockPos corePos;
+	private static BlockPos corePos;
+	public static BlockPos anticipatedPos;
 	
-	private TileEntityKilnCore getMachineCore(World worldIn, BlockPos pos)
+	public static TileEntityKilnCore getCoreTE(World worldIn, BlockPos pos)
 	{
 		EnumFacing facing = worldIn.getBlockState(pos).getValue(BlockHorizontal.FACING);
-		
 		if (facing == EnumFacing.NORTH)
 		{
-			TileEntity coreEntity = worldIn.getTileEntity(pos.add(0, 0, 3));
+			anticipatedPos = pos.add(0, 0, 3);
+			TileEntity coreEntity = worldIn.getTileEntity(anticipatedPos);
 			if (coreEntity instanceof TileEntityKilnCore)
 			{
-				if (((TileEntityKilnCore) coreEntity).isStructureValid(worldIn))
-				{
-					return (TileEntityKilnCore)coreEntity;
-				}
-				else
-				{
-					return null;
-				}
+				corePos = coreEntity.getPos();
+				return (TileEntityKilnCore)coreEntity;
 			}
 		}
 		if (facing == EnumFacing.SOUTH)
 		{
-			TileEntity coreEntity = worldIn.getTileEntity(pos.add(0, 0, -3));
+			anticipatedPos = pos.add(0, 0, -3);
+			TileEntity coreEntity = worldIn.getTileEntity(anticipatedPos);
 			if (coreEntity instanceof TileEntityKilnCore)
 			{
-				if (((TileEntityKilnCore) coreEntity).isStructureValid(worldIn))
-				{
-					return (TileEntityKilnCore)coreEntity;
-				}
-				else
-				{
-					return null;
-				}
+				corePos = coreEntity.getPos();
+				return (TileEntityKilnCore)coreEntity;
+
 			}
 		}
 		if (facing == EnumFacing.WEST)
 		{
-			TileEntity coreEntity = worldIn.getTileEntity(pos.add(3, 0, 0));
+			anticipatedPos = pos.add(3, 0, 0);
+			TileEntity coreEntity = worldIn.getTileEntity(anticipatedPos);
 			if (coreEntity instanceof TileEntityKilnCore)
 			{
-				if (((TileEntityKilnCore) coreEntity).isStructureValid(worldIn))
-				{
-					return (TileEntityKilnCore)coreEntity;
-				}
-				else
-				{
-					return null;
-				}
+				corePos = coreEntity.getPos();
+				return (TileEntityKilnCore)coreEntity;
 			}
 		}
 		if (facing == EnumFacing.EAST)
 		{
-			TileEntity coreEntity = worldIn.getTileEntity(pos.add(-3, 0, 0));
+			anticipatedPos = pos.add(-3, 0, 0);
+			TileEntity coreEntity = worldIn.getTileEntity(anticipatedPos);
 			if (coreEntity instanceof TileEntityKilnCore)
 			{
-				if (((TileEntityKilnCore) coreEntity).isStructureValid(worldIn))
-				{
-					return (TileEntityKilnCore)coreEntity;
-				}
-				else
-				{
-					return null;
-				}
+				corePos = coreEntity.getPos();
+				return (TileEntityKilnCore)coreEntity;
 			}
 		}
+		corePos = anticipatedPos;
 		return null;
+	}
+	
+	public static boolean isStructureValid(World worldIn)
+	{
+		return ((TileEntityKilnCore)worldIn.getTileEntity(corePos)).isStructureValid(worldIn);
 	}
 	
 	@Override
 	public void update()
 	{
-		if (corePos == null)
+		if (getCoreTE(world, pos) == null)
 		{
 			return;
 		}
 		
 		if (!world.isRemote)
 		{
-			BlockKilnHatch.updateBlockState(false, this.world, pos);
+			MachineKilnHatch.updateBlockState(false, this.world, pos);
 		}
 	}
 }

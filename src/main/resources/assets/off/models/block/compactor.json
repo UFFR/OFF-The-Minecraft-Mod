@@ -1,8 +1,8 @@
 {
    "parent": "block/orientable",
    "textures": {
-       "front": "off:blocks/compactor_front",
-       "top": "off:blocks/compactor_side",
-       "side": "off:blocks/compactor_side"
+       "front": "off:blocks/compactor_front_alt",
+       "top": "off:blocks/compactor_side_alt",
+       "side": "off:blocks/compactor_side_alt"
    }
 }

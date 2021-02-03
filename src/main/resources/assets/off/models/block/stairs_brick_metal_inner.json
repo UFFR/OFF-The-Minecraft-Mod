@@ -1,8 +1,8 @@
 {
    "parent": "block/inner_stairs",
    "textures": {
-       "bottom": "off:blocks/bricks_metal",
-       "top": "off:blocks/bricks_metal",
-       "side": "off:blocks/bricks_metal"
+       "bottom": "off:blocks/bricks_metal_alt",
+       "top": "off:blocks/bricks_metal_alt",
+       "side": "off:blocks/bricks_metal_alt"
    }
 }

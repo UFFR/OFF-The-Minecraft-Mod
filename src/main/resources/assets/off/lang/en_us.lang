@@ -1,5 +1,6 @@
 //GUIs
 container.compactor=Compactor
+container.kiln=Industrial Furnace (BETA)
 
 //Blocks
 tile.dirt.name=Mound of Low-Grade Metal

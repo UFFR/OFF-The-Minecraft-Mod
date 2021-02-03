@@ -1,6 +1,6 @@
 package com.off.tileentity;
 
-import com.off.blocks.machines.BlockCompactor;
+import com.off.blocks.machines.MachineCompactor;
 import com.off.inventory.CompactorRecipes;
 import com.off.inventory.CompactorRecipes.CompactorRecipe;
 
@@ -235,11 +235,11 @@ public class TileEntityCompactor extends TileEntity implements ITickable
 			}
 			if (canProcess() && processingTime > 0)
 			{
-				BlockCompactor.updateBlockState(true, world, pos);
+				MachineCompactor.updateBlockState(true, world, pos);
 			}
 			else
 			{
-				BlockCompactor.updateBlockState(false, world, pos);
+				MachineCompactor.updateBlockState(false, world, pos);
 			}
 		}
 	}

@@ -10,8 +10,9 @@ import com.off.blocks.BlockOre;
 import com.off.blocks.BlockPillar;
 import com.off.blocks.BlockSpecial;
 import com.off.blocks.BlockStair;
-import com.off.blocks.machines.BlockCompactor;
-import com.off.blocks.machines.BlockKilnHatch;
+import com.off.blocks.machines.MachineKilnHatch;
+import com.off.blocks.machines.MachineCompactor;
+import com.off.blocks.machines.MachineKilnCore;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -73,16 +74,16 @@ public class ModBlocks
 	/* Industrial Furnace */
 	// Exclusive
 	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Basically "smooth stone", you can use it for decoration of some sort I suppose
-	public static final Block FURNACE_CORE = new BlockBase("furnace_core", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Main block of the furnace
+	public static final Block FURNACE_CORE = new MachineKilnCore("furnace_core", defaultMaterial); // Main block of the furnace
 	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Sort of an "extension" of the core
-	public static final Block FURNACE_ACCESS = new BlockKilnHatch("furnace_access"); // Access port to core
+	public static final Block FURNACE_ACCESS = new MachineKilnHatch("furnace_access"); // Access port to core
 
 	// Non-exclusive
 	public static final Block BRICKS_METAL = new BlockBase("bricks_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Outer casing, can also be used as a decent building material
 	
 	/* Miscellaneous */
 	// Machines
-	public static final Block COMPACTOR = new BlockCompactor("compactor"); // Compacts "liquid" plastic ingots into fully solid ones, can also make plates
+	public static final Block COMPACTOR = new MachineCompactor("compactor"); // Compacts "liquid" plastic ingots into fully solid ones, can also make plates
 	// Building blocks
 	public static final Block BRICKS = new BlockBase("bricks", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel); // Cheap building material, most generated buildings use it.
 	public static final Block STAIRS_BRICK_METAL = new BlockStair(BRICKS_METAL.getDefaultState(), "stairs_brick_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Stairs made from metallic bricks
