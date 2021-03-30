@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class TileEntityKilnHatch extends TileEntity implements ITickable
 {
-	private static BlockPos corePos;
+	public static BlockPos corePos;
 	public static BlockPos anticipatedPos;
 	
 	public static TileEntityKilnCore getCoreTE(World worldIn, BlockPos pos)
@@ -58,7 +58,7 @@ public class TileEntityKilnHatch extends TileEntity implements ITickable
 				return (TileEntityKilnCore)coreEntity;
 			}
 		}
-		corePos = anticipatedPos;
+		corePos = null;
 		return null;
 	}
 	
@@ -77,7 +77,7 @@ public class TileEntityKilnHatch extends TileEntity implements ITickable
 		
 		if (!world.isRemote)
 		{
-			MachineKilnHatch.updateBlockState(false, this.world, pos);
+			MachineKilnHatch.updateBlockState(getCoreTE(world, pos).isBurning(), this.world, pos);
 		}
 	}
 }

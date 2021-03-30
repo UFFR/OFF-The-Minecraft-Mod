@@ -1,7 +1,4 @@
-package com.off.util;
-
-import com.off.init.ModBlocks;
-import com.off.init.ModItems;
+package com.off.init;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;

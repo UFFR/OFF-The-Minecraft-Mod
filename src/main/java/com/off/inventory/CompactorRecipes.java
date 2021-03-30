@@ -2,6 +2,7 @@ package com.off.inventory;
 
 import java.util.HashMap;
 
+import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 
 import net.minecraft.item.Item;
@@ -16,6 +17,7 @@ public class CompactorRecipes
         addCompactorRecipe(ModItems.INGOT_PLASTIC_RAW, ModItems.INGOT_PLASTIC);
         addCompactorRecipe(ModItems.INGOT_PLASTIC, ModItems.PLATE_PLASTIC);
         addCompactorRecipe(ModItems.INGOT_METAL, ModItems.PLATE_METAL);
+        addCompactorRecipe(Item.getItemFromBlock(ModBlocks.DIRT), Item.getItemFromBlock(ModBlocks.ROCK));
     }
     
     public static void addCompactorRecipe(Item input, Item output)
@@ -41,7 +43,6 @@ public class CompactorRecipes
         	//System.out.println("[CompactorRecipes]: No recipe output");
         	return null;
         }
-        // TODO remove or comment out debugging stuff once errors fixed
         //ComparableStack comp = new ComparableStack(input);
         //System.out.println("[CompactorRecipes]: Output input: " + recipeList.get(input).getRegistryName().toString());
         //return CompactorRecipes.recipeList.get(comp);

@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiCompactor extends GuiContainer
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID + ":textures/gui/compactor.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MODID, "textures/gui/compactor.png");
 	private final InventoryPlayer player;
 	private final TileEntityCompactor tileEntityCompactor;
 	
@@ -41,7 +41,7 @@ public class GuiCompactor extends GuiContainer
 		this.mc.getTextureManager().bindTexture(TEXTURE);
 		this.drawTexturedModalRect(getGuiLeft(), getGuiTop(), 0, 0, xSize, ySize);
 		// Active icon
-		if (TileEntityCompactor.isActive(tileEntityCompactor))
+		if (tileEntityCompactor.isActive())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 48, this.guiTop + 50, 176, 17, 32, 16);
 		}
@@ -62,7 +62,9 @@ public class GuiCompactor extends GuiContainer
 	{
 		int i = this.tileEntityCompactor.getField(1);
 		if (i == 0)
+		{
 			i = 200;
+		}
 		return this.tileEntityCompactor.getField(0) * pixels / i;
 	}
 }

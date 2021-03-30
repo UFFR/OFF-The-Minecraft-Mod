@@ -4,11 +4,12 @@ import org.apache.logging.log4j.Logger;
 
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.init.OreDictionaryRegistry;
 import com.off.init.SmeltingRecipes;
 import com.off.init.SoundRegistry;
 import com.off.inventory.CompactorRecipes;
+import com.off.inventory.KilnRecipes;
 import com.off.proxy.CommonProxy;
-import com.off.util.OreDictionaryRegistry;
 import com.off.util.Reference;
 import com.off.util.TextureLoader;
 import com.off.util.handlers.GuiHandler;
@@ -98,6 +99,7 @@ public class MainInit
         TextureLoader.registerBlocks(mesher);// Register item block textures
     	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());// Register GUIs
     	CompactorRecipes.register();// Register compactor recipes
+    	KilnRecipes.register();// Register kiln recipes
     }
     
 	@EventHandler

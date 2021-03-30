@@ -21,6 +21,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -33,6 +34,8 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class MachineCompactor extends BlockContainer
 {
@@ -40,7 +43,6 @@ public class MachineCompactor extends BlockContainer
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	
 	private final boolean isActive;
-	private static boolean keepInventory;
 	
 	public MachineCompactor(String name)
 	{
@@ -82,6 +84,24 @@ public class MachineCompactor extends BlockContainer
 	}
 
 	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+	{
+		TileEntityCompactor tileEntity = (TileEntityCompactor) worldIn.getTileEntity(pos);
+		IItemHandler itemHandler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
+		ItemStack stack1 = itemHandler.getStackInSlot(0);
+		ItemStack stack2 = itemHandler.getStackInSlot(1);
+		if (!stack1.isEmpty())
+		{
+			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack1));
+		}
+		if (!stack2.isEmpty())
+		{
+			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack2));
+		}
+		super.breakBlock(worldIn, pos, state);
+	}
+	
+	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
@@ -108,40 +128,14 @@ public class MachineCompactor extends BlockContainer
 	{
 		EnumFacing facing = worldIn.getBlockState(pos).getValue(FACING);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		keepInventory = true;
-		//Boolean blockState = worldIn.getBlockState(pos).getValue(ACTIVE);
 		worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, isActive));
-		/*if (isActive != blockState)
-		{
-			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, false));
-		}
-		else if (!isActive != blockState)
-		{
-			worldIn.setBlockState(pos, ModBlocks.COMPACTOR.getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, true));
-		}*/
-		
-		keepInventory = false;
-		
 		if (tileEntity != null)
 		{
 			tileEntity.validate();
 			worldIn.setTileEntity(pos, tileEntity);
 		}
 	}
-		
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
-	{
-		if (!keepInventory)
-		{
-			final TileEntity tileEntity = worldIn.getTileEntity(pos);
-			if (tileEntity instanceof TileEntityCompactor)
-			{
-				worldIn.updateComparatorOutputLevel(pos, this);
-			}
-		}
-		super.breakBlock(worldIn, pos, state);
-	}
-	
+			
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
 	{
@@ -166,7 +160,7 @@ public class MachineCompactor extends BlockContainer
 		}
 	}
 
-	public static void setState(boolean active, World worldIn, BlockPos pos)
+	public void setState(boolean active, World worldIn, BlockPos pos)
 	{
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		

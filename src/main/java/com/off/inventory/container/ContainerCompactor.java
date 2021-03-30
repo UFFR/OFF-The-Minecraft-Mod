@@ -23,7 +23,7 @@ public class ContainerCompactor extends Container
 	public ContainerCompactor(InventoryPlayer player, TileEntityCompactor tileEntity)
 	{
 		this.tileEntity = tileEntity;
-		this.processingTime = tileEntity.processingTime;
+		this.processingTime = 0;
 		this.totalTime = tileEntity.totalTime;
 		
 		IItemHandler itemHandler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -50,7 +50,7 @@ public class ContainerCompactor extends Container
 	public void addListener(IContainerListener listener)
 	{
 		super.addListener(listener);
-		listener.sendWindowProperty(this, 0, this.tileEntity.processingTime);
+		listener.sendWindowProperty(this, 0, tileEntity.processingTime);
 	}
 	
 	@Override

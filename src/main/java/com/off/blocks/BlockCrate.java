@@ -59,7 +59,7 @@ public class BlockCrate extends Block
 		}
 		else
 		{
-			if (worldIn.isRemote)
+			if (!worldIn.isRemote)
 			{
 				player.sendMessage(new TextComponentTranslation("You're going to need a crate opener for that..."));
 				return false;

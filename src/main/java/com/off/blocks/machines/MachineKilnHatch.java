@@ -3,10 +3,12 @@ package com.off.blocks.machines;
 import java.util.List;
 import java.util.Random;
 
+import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
 import com.off.tileentity.TileEntityKilnHatch;
 import com.off.util.ItemLore;
+import com.off.util.Reference;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -110,7 +112,8 @@ public class MachineKilnHatch extends BlockContainer
 				}
 				else
 				{
-					playerIn.sendMessage(new TextComponentTranslation("[INDUSTRIAL FURNACE (KILN)]: STRUCTURE VALID!"));
+					//playerIn.sendMessage(new TextComponentTranslation("[INDUSTRIAL FURNACE (KILN)]: STRUCTURE VALID!"));
+					playerIn.openGui(MainInit.instance, Reference.GUI_KILN, worldIn, TileEntityKilnHatch.corePos.getX(), TileEntityKilnHatch.corePos.getY(), TileEntityKilnHatch.corePos.getZ());
 				}
 			}
 			return true;
@@ -126,15 +129,6 @@ public class MachineKilnHatch extends BlockContainer
 		EnumFacing facing = worldIn.getBlockState(pos).getValue(FACING);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, isBurning));
-		//Boolean blockState = worldIn.getBlockState(pos).getValue(BURNING);
-		/*if (isBurning != blockState)
-		{
-			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, false));
-		}
-		else if (!isBurning != blockState)
-		{
-			worldIn.setBlockState(pos, ModBlocks.FURNACE_ACCESS.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, true));
-		}*/
 		if (tileEntity != null)
 		{
 			tileEntity.validate();
