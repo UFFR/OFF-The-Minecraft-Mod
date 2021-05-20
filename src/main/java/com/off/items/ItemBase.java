@@ -1,10 +1,12 @@
 package com.off.items;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.off.MainInit;
-import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.util.EnumItemLore;
+import com.off.util.IItemLore;
 import com.off.util.ItemLore;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,53 +15,41 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemBase extends Item
+public class ItemBase extends Item implements IItemLore
 {
-
+	EnumRarity rarity = EnumRarity.COMMON;
+	boolean hasEffect = false;
+	private List<EnumItemLore> loreList = new ArrayList<EnumItemLore>();
 	public ItemBase(String name)
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		if (this == ModItems.LOGO)
-		{
-			setCreativeTab(null);
-		}
-		else
-		{
-			setCreativeTab(MainInit.tabOFFItems);
-		}
+        setCreativeTab(MainInit.tabOFFItems);
 		ModItems.ITEMS.add(this);
+	}
+	
+	public ItemBase setRarity(EnumRarity customRarity)
+	{
+		rarity = customRarity;
+		return this;
+	}
+	
+	public ItemBase setHasEffect()
+	{
+		hasEffect = true;
+		return this;
 	}
 	
 	@Override
 	public EnumRarity getRarity(ItemStack stack)
 	{
-		if (this == ModItems.TICKET_FORTUNE || this == ModItems.FLESH_GOLD)
-		{
-			return EnumRarity.UNCOMMON;
-		}
-		if (this == ModItems.FLESH_ELSEN || this == ModItems.FLESH_ELSEN_BURNED || this == ModItems.SUGAR || this == Item.getItemFromBlock(ModBlocks.BLOCK_SUGAR))
-		{
-			return EnumRarity.RARE;
-		}
-		if (this == Item.getItemFromBlock(ModBlocks.VOID_TREE_LEAVES) || this == Item.getItemFromBlock(ModBlocks.VOID_TREE_STEM))
-		{
-			return EnumRarity.EPIC;
-		}
-		return EnumRarity.COMMON;
+		return rarity;
 	}
 	
 	@Override
 	public boolean hasEffect(ItemStack stack)
 	{
-		if (this == ModItems.TICKET_FORTUNE || this == ModItems.FLESH_GOLD || this == ModItems.SUGAR)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return hasEffect;
 	}
 	
 	@Override
@@ -171,5 +161,13 @@ public class ItemBase extends Item
 		{
 			tooltip.add(ItemLore.loreItem[3]);
 		}
+	}
+
+	@Override
+	public IItemLore addLore(EnumItemLore... loreIn)
+	{
+		for (EnumItemLore lore : loreIn)
+			loreList.add(lore);
+		return this;
 	}
 }

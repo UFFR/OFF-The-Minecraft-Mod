@@ -1,90 +1,74 @@
-//GUIs
-container.compactor=Compactor
-container.kiln=Industrial Furnace (BETA)
+item.bottle_large.name=Large Bottle
+item.bottle_meat.name=Bottle of Meat
+item.bottle_plastic.name=Bottle of Plastic
+item.bottle_sealed.name=Sealed Bottle
+item.bottle_smoke.name=Bottle of Smoke
+item.crowbar.name=Crate Opener
+item.flesh_elsen.name=Elsen Flesh
+item.flesh_elsen_burned.name=Charred Elsen Flesh
+item.flesh_gold.name=Golden Flesh
+item.flesh_silver.name=Silver Flesh
+item.fragment_poor_metal.name=Fragment of Low-Grade Metal
+item.ingot_metal.name=Metal Ingot
+item.ingot_plastic.name=Plastic Ingot
+item.ingot_plastic_raw.name=Raw Plastic Ingot
+item.meat.name=Cooked Meat
+item.meat_metal.name=Metal Infused Meat
+item.meat_raw.name=Raw Meat
+item.metal_meat.name=Metal Infused Meat
+item.nugget_metal.name=Metal Nugget
+item.nugget_metal_impure.name=Impure Metal Nugget
+item.nugget_plastic_raw.name=Raw Plastic Nugget
+item.plate_metal.name=Metal Plate
+item.plate_plastic.name=Plastic Plate
+item.poor_metal.name=Poor-Quality Metal
+item.record.Clockwork.desc=Alias Conrad Coldwood - Clockwork
+item.record.Empty Warehouse.desc=Alias Conrad Coldwood - Empty Warehouse
+item.record.Fake Orchestra.desc=Alias Conrad Coldwood - Fake Orchestra
+item.record.Flesh Maze Tango.desc=Alias Conrad Coldwood - Flesh Maze Tango
+item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents
+item.record.Not Safe.desc=Alias Conrad Coldwood - Not Safe
+item.record.Pepper Steak.desc=Alias Conrad Coldwood - Pepper Steak
+item.record.Rainy Day.desc=Alias Conrad Coldwood - Rainy Day (and Meat)
+item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
+item.record.Soft Breeze.desc=Alias Conrad Coldwood - Soft Breeze
+item.record.Stay In Your Coma.desc=Alias Conrad Coldwood - Stay In Your Coma
+item.record.Tender Sugar.desc=Alias Conrad Coldwood - Tender Sugar
+item.sugar.name=Sugar
+item.ticket_fortune.name=Fortune Ticket
+item.ticket_luck.name=Luck Ticket
 
-//Blocks
-tile.dirt.name=Mound of Low-Grade Metal
-tile.rock.name=Rock
-tile.ore_metal.name=Metal Ore
+itemGroup.tabOFFBlocks=OFF Blocks
+itemGroup.tabOFFItems=OFF Items
+itemGroup.tabOFFMusic=OFF Music
+itemGroup.tabOFFTools=OFF Tools
+
 tile.block_metal.name=Block of Metal
 tile.block_plastic.name=Block of Plastic
 tile.block_sugar.name=Large Mound of Sugar
-tile.ore_smoke.name=Smoke Deposit
-tile.ore_smoke_empty.name=Depleted Smoke Deposit
-tile.heat_shielding.name=Industrial Furnace Heat Shielding
-tile.furnace_core.name=Industrial Furnace Core
-tile.furnace_core_component.name=Industrial Furnace Core Component
-tile.furnace_access.name=Industrial Furnace Access Chute
 tile.bricks.name=Bricks
 tile.bricks_metal.name=Metallic Bricks
-tile.void_tree_stem.name=Void Tree Log
-tile.void_tree_leaves.name=Void Tree Leaves
-tile.void_tree_planks.name=Void Tree Planks
-tile.nothing.name=Nothing
-tile.cube_yellow.name=Yellow Cube
+tile.compactor.name=Compactor
+tile.crate_meat.name=Crate of Meat
+tile.crate_metal.name=Crate of Metal
+tile.crate_plastic.name=Crate of Plastic
+tile.crate_smoke.name=Crate of Smoke
 tile.cube_red.name=Red Cube
+tile.cube_yellow.name=Yellow Cube
+tile.dirt.name=Mound of Low-Grade Metal
+tile.furnace_access.name=Industrial Furnace Access Chute
+tile.furnace_core.name=Industrial Furnace Core
+tile.furnace_core_component.name=Industrial Furnace Core Component
+tile.heat_shielding.name=Industrial Furnace Heat Shielding
+tile.nothing.name=Nothing
+tile.ore_metal.name=Metal Ore
+tile.ore_smoke.name=Smoke Deposit
+tile.ore_smoke_empty.name=Depleted Smoke Deposit
+tile.rock.name=Rock
+tile.stairs_brick.name=Brick Stairs
 tile.stairs_brick_metal.name=Metal Brick Stairs
 tile.stairs_metal.name=Metal Stairs
 tile.stairs_plastic.name=Plastic Stairs
-tile.stairs_brick.name=Brick Stairs
-tile.compactor.name=Compactor
-
-//Crates
-tile.crate_metal.name=Crate of Metal
-tile.crate_meat.name=Crate of Meat
-tile.crate_smoke.name=Crate of Smoke
-tile.crate_plastic.name=Crate of Plastic
-
-//Items
-item.bottle_smoke.name=Bottle of Smoke
-item.ingot_metal.name=Metal Ingot
-item.plate_metal.name=Metal Plate
-item.nugget_metal.name=Metal Nugget
-item.nugget_metal_impure.name=Impure Metal Nugget
-item.poor_metal.name=Poor-Quality Metal
-item.fragment_poor_metal.name=Fragment of Low-Grade Metal
-item.metal_meat.name=Metal Infused Meat
-item.ingot_plastic.name=Plastic Ingot
-item.plate_plastic.name=Plastic Plate
-item.ingot_plastic_raw.name=Raw Plastic Ingot
-item.nugget_plastic_raw.name=Raw Plastic Nugget
-item.bottle_plastic.name=Bottle of Plastic
-item.meat.name=Cooked Meat
-item.meat_raw.name=Raw Meat
-item.meat_metal.name=Metal Infused Meat
-item.bottle_meat.name=Bottle of Meat
-item.sugar.name=Sugar
-item.ticket_luck.name=Luck Ticket
-item.ticket_fortune.name=Fortune Ticket
-item.flesh_silver.name=Silver Flesh
-item.flesh_gold.name=Golden Flesh
-item.bottle_large.name=Large Bottle
-item.flesh_elsen.name=Elsen Flesh
-item.flesh_elsen_burned.name=Charred Elsen Flesh
-item.bottle_sealed.name=Sealed Bottle
-item.crowbar.name=Crate Opener
-
-//Discs
-item.record.Silencio.desc=Alias Conrad Coldwood - Silencio
-item.record.Fourteen Residents.desc=Alias Conrad Coldwood - Fourteen Residents
-item.record.Pepper Steak.desc=Alias Conrad Coldwood - Pepper Steak
-item.record.Not Safe.desc=Alias Conrad Coldwood - Not Safe
-item.record.Stay In Your Coma.desc=Alias Conrad Coldwood - Stay In Your Coma
-item.record.Empty Warehouse.desc=Alias Conrad Coldwood - Empty Warehouse
-item.record.Tender Sugar.desc=Alias Conrad Coldwood - Tender Sugar
-item.record.Rainy Day.desc=Alias Conrad Coldwood - Rainy Day (and Meat)
-item.record.Soft Breeze.desc=Alias Conrad Coldwood - Soft Breeze
-item.record.Clockwork.desc=Alias Conrad Coldwood - Clockwork
-item.record.Flesh Maze Tango.desc=Alias Conrad Coldwood - Flesh Maze Tango
-item.record.Fake Orchestra.desc=Alias Conrad Coldwood - Fake Orchestra
-
-//Creative tabs
-itemGroup.tabOFFItems=OFF Items
-itemGroup.tabOFFBlocks=OFF Blocks
-itemGroup.tabOFFTools=OFF Tools
-itemGroup.tabOFFMusic=OFF Music
-
-//Fluids
-fluid.plastic=Plastic
-fluid.smoke=Smoke
-fluid.meat=Meat
+tile.void_tree_leaves.name=Void Tree Leaves
+tile.void_tree_planks.name=Void Tree Planks
+tile.void_tree_stem.name=Void Tree Log

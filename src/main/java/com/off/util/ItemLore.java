@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 public class ItemLore extends Item
 {
 	/* Lore tooltips */
-	// Elemental lore, applys to only basic item forms as to not be superfluous
+	// Elemental lore, applies to only basic item forms as to not be superfluous
 	public static String[] elementLore = 
 	{
 		"\"As the first of four elements... It's an important element. Because without smoke, people would have nothing to breathe.\"",
@@ -14,7 +14,7 @@ public class ItemLore extends Item
 		"\"As the first of the four elements... It's an important element. Because without meat, people would have nothing to eat. They would die of starvation, one after another.\"",
 		"\"It's a secret element... The fifth element... The most important element... Because without sugar, people could no longer bear reality, and they would go mad.\""
 	};
-	// Generic ttems
+	// Generic items
 	public static String[] loreItem =
 		{
 				"Air-tight bottle",

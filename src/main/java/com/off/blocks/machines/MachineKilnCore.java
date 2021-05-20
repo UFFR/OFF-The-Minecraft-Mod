@@ -27,14 +27,13 @@ import net.minecraftforge.items.IItemHandler;
 public class MachineKilnCore extends BlockContainer
 {
 
-	public MachineKilnCore(String name, Material materialIn)
+	public MachineKilnCore(String name)
 	{
-		super(materialIn);
+		super(Material.ROCK);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setHardness(ModBlocks.defaultHardness);
-		setResistance(ModBlocks.defaultResistance);
-		setHarvestLevel(ModBlocks.defaultToolType, ModBlocks.defaultHarvestLevel);
+		setHardness(2.0F);
+		setResistance(5.0F);
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}

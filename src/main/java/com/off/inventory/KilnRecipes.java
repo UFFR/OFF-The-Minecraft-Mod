@@ -10,8 +10,7 @@ import net.minecraft.item.ItemStack;
 
 public class KilnRecipes
 {
-	private static HashMap<Item, ItemStack> recipeList = new HashMap<Item, ItemStack>();
-	private static HashMap<Item, Float> heatList = new HashMap<Item, Float>();
+	private static HashMap<Item, KilnRecipe> recipeList = new HashMap<Item, KilnRecipe>();
 	public static void register()
 	{
 		addKilnRecipe(ModItems.FLESH_ELSEN, new ItemStack(ModItems.SUGAR, 2), 1200.0F);
@@ -20,23 +19,23 @@ public class KilnRecipes
 		addKilnRecipe(ModItems.NUGGET_METAL_IMPURE, new ItemStack(ModItems.NUGGET_METAL, 3), 375.5F);
 		addKilnRecipe(ModItems.MEAT_METAL, new ItemStack(ModItems.FRAGMENT_POOR_METAL, 6), 350.0F);
 	}
-	
-	public static void addKilnRecipe(Item input, ItemStack output, Float heat)
+	/**
+	 * Recipe adding
+	 * @param input - The input item 
+	 * @param output - ItemStack output (can be more than 1)
+	 * @param heat - Heat required for the recipe to work
+	 */
+	private static void addKilnRecipe(Item input, ItemStack output, Float heat)
 	{
-		recipeList.put(input, output);
-		heatList.put(input, heat);
+		recipeList.put(input, new KilnRecipe(output, heat));
 	}
 	
-	public static KilnRecipe getOutput(Item input)
+	public static KilnRecipe getRecipe(Item input)
 	{
 		if (input == null || input.getRegistryName() == null || !recipeList.containsKey(input))
-		{
-			System.out.println("[KILNRECIPES] No recipe");
 			return null;
-		}
-		System.out.println("[KILNRECIPES] Recipe output: " + recipeList.get(input).getItem().getRegistryName().toString());
-		System.out.println("[KILNRECIPES] Recipe heat: " + heatList.get(input));
-		return new KilnRecipe(recipeList.get(input), heatList.get(input));
+		else
+			return recipeList.get(input);
 	}
 	
 	public static class KilnRecipe
@@ -44,17 +43,14 @@ public class KilnRecipes
 		public ItemStack output;
 		public float heat;
 		
-		public KilnRecipe() {}
-		
-		public KilnRecipe(Item output, float heat)
+		public KilnRecipe(ItemStack out, float heat)
 		{
-			this(new ItemStack(output), heat);
-		}
-		
-		public KilnRecipe(ItemStack output, float heat)
-		{
-			this.output = output;
+			this.output = out;
 			this.heat = heat;
+		}
+		public ItemStack getOutput()
+		{
+			return output.copy();
 		}
 	}
 }

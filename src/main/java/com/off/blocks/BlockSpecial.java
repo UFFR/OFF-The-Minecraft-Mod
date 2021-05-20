@@ -5,9 +5,9 @@ import java.util.List;
 import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.util.IItemLore;
 import com.off.util.ItemLore;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,12 +18,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.world.World;
 
-public class BlockSpecial extends Block
+public class BlockSpecial extends BlockBase implements IItemLore
 {
-
+	/**
+	 * Special block, with numerous parameters
+	 * @param name - Registry name
+	 * @param material - Material type
+	 * @param sound - Sound type
+	 * @param hardness - Time required to mine
+	 * @param resistance - Resistance to explosions
+	 * @param tooltype - Tool required to mine (efficiently)
+	 * @param harvestlevel - Tool level required to mine (0 = hand)
+	 * @param opacity - How much light is allowed through or not
+	 * @param luminence - How much light is emitted
+	 * @param unbreakable - Should it be unbreakable like bedrock
+	 */
 	public BlockSpecial(String name, Material material, SoundType sound, Float hardness, Float resistance, String tooltype, Integer harvestlevel, Integer opacity, Float luminence, Boolean unbreakable)
 	{
-		super(material);
+		super(name, material, sound);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(sound);

@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
-
+/** @author HbmMods**/
 public class Common
 {
 	public static abstract class AStack implements Comparable<AStack>

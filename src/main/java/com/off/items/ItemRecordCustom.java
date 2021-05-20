@@ -1,11 +1,14 @@
 package com.off.items;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.off.MainInit;
 import com.off.init.ModItems;
+import com.off.util.EnumItemLore;
+import com.off.util.IItemLore;
 
 import net.minecraft.block.BlockJukebox;
 import net.minecraft.client.resources.I18n;
@@ -27,11 +30,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRecordCustom extends ItemRecord
+public class ItemRecordCustom extends ItemRecord implements IItemLore
 {
+	EnumRarity rarity = EnumRarity.RARE;
+	boolean hasEffect = false;
+	private List<EnumItemLore> loreList = new ArrayList<EnumItemLore>();
 	private static final Map<String, ItemRecordCustom> modRecords = new HashMap<String, ItemRecordCustom>();
 	public final String recordName;
-
+	/**
+	 * Custom record constructor
+	 * @param name - Registry name
+	 * @param soundIn - Sound to play
+	 * @param itemName - Record name
+	 */
 	public ItemRecordCustom(String name, SoundEvent soundIn, String itemName)
 	{
 		super(itemName, soundIn);
@@ -86,27 +97,13 @@ public class ItemRecordCustom extends ItemRecord
 	@Override
 	public EnumRarity getRarity(ItemStack stack)
 	{
-		if (this == ModItems.DISC_PEPPER_STEAK || this == ModItems.DISC_FAKE_ORCHESTRA)
-		{
-			return EnumRarity.EPIC;
-		}
-		else
-		{
-			return EnumRarity.RARE;
-		}
+		return rarity;
 	}
 	
 	@Override
 	public boolean hasEffect(ItemStack stack)
 	{
-		if (this == ModItems.DISC_PEPPER_STEAK || this == ModItems.DISC_FAKE_ORCHESTRA)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return hasEffect;
 	}
 		
 	@Override
@@ -114,5 +111,27 @@ public class ItemRecordCustom extends ItemRecord
 	public String getItemStackDisplayName(ItemStack stack)
 	{
 		return (I18n.format(Items.RECORD_11.getUnlocalizedName() + ".name")).trim();
+	}
+
+	@Override
+	public ItemRecordCustom addLore(EnumItemLore... loreIn)
+	{
+		for (EnumItemLore lore : loreIn)
+			loreList.add(lore);
+		return this;
+	}
+
+	@Override
+	public IItemLore setHasEffect()
+	{
+		hasEffect = true;
+		return this;
+	}
+
+	@Override
+	public IItemLore setRarity(EnumRarity rarityIn)
+	{
+		rarity = rarityIn;
+		return this;
 	}
 }

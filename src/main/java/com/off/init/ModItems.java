@@ -6,6 +6,7 @@ import java.util.List;
 import com.off.items.ItemBase;
 import com.off.items.ItemRecordCustom;
 
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -41,18 +42,18 @@ public class ModItems
 	public static final Item BOTTLE_SMOKE = new ItemBase("bottle_smoke"); // Bottle containing smoke, item storage, also used in trading
 	
 	// Sugar items
-	public static final Item FLESH_ELSEN = new ItemBase("flesh_elsen"); // From dead Elsen
-	public static final Item FLESH_ELSEN_BURNED = new ItemBase("flesh_elsen_burned"); // From attempting to cook it in a regular furnace
-	public static final Item SUGAR = new ItemBase("sugar"); // Put the sugar in the tube
+	public static final Item FLESH_ELSEN = new ItemBase("flesh_elsen").setRarity(EnumRarity.RARE); // From dead Elsen
+	public static final Item FLESH_ELSEN_BURNED = new ItemBase("flesh_elsen_burned").setRarity(EnumRarity.RARE); // From attempting to cook it in a regular furnace
+	public static final Item SUGAR = new ItemBase("sugar").setRarity(EnumRarity.RARE).setHasEffect(); // Put the sugar in the tube
 	
 	/* Consumables */
 	// Tickets
 	public static final Item TICKET_LUCK = new ItemBase("ticket_luck"); // Restores some health
-	public static final Item TICKET_FORTUNE = new ItemBase("ticket_fortune"); // Restores a moderate amount of health
+	public static final Item TICKET_FORTUNE = new ItemBase("ticket_fortune").setRarity(EnumRarity.UNCOMMON).setHasEffect(); // Restores a moderate amount of health
 	
 	// Flesh
 	public static final Item FLESH_SILVER = new ItemBase("flesh_silver"); // Restores some competence points
-	public static final Item FLESH_GOLD = new ItemBase("flesh_gold"); // Restores a moderate amounts of competence points
+	public static final Item FLESH_GOLD = new ItemBase("flesh_gold").setRarity(EnumRarity.UNCOMMON).setHasEffect(); // Restores a moderate amounts of competence points
 	
 	/* Miscellaneous */
 	// Misc items
@@ -64,7 +65,7 @@ public class ModItems
 	// Discs
 	public static final Item DISC_SILENCIO = new ItemRecordCustom("disc_silencio", SoundRegistry.silencio, "Silencio");
 	public static final Item DISC_FOURTEEN_RESIDENTS = new ItemRecordCustom("disc_fourteen_residents", SoundRegistry.fourteenResidents, "Fourteen Residents");
-	public static final Item DISC_PEPPER_STEAK = new ItemRecordCustom("disc_pepper_steak", SoundRegistry.pepperSteak, "Pepper Steak");
+	public static final Item DISC_PEPPER_STEAK = (Item) new ItemRecordCustom("disc_pepper_steak", SoundRegistry.pepperSteak, "Pepper Steak").setHasEffect().setRarity(EnumRarity.EPIC);
 	public static final Item DISC_NOT_SAFE = new ItemRecordCustom("disc_not_safe", SoundRegistry.notSafe, "Not Safe");
 	public static final Item DISC_STAY_IN_YOUR_COMA = new ItemRecordCustom("disc_stay_in_your_coma", SoundRegistry.stayInYourComa, "Stay In Your Coma");
 	public static final Item DISC_EMPTY_WAREHOUSE = new ItemRecordCustom("disc_empty_warehouse", SoundRegistry.emptyWarehouse, "Empty Warehouse");
@@ -73,7 +74,7 @@ public class ModItems
 	public static final Item DISC_SOFT_BREEZE = new ItemRecordCustom("disc_soft_breeze", SoundRegistry.softBreeze, "Soft Breeze");
 	public static final Item DISC_CLOCKWORK = new ItemRecordCustom("disc_clockwork", SoundRegistry.clockwork, "Clockwork");
 	public static final Item DISC_FLESH_MAZE_TANGO = new ItemRecordCustom("disc_flesh_maze_tango", SoundRegistry.fleshMazeTango, "Flesh Maze Tango");
-	public static final Item DISC_FAKE_ORCHESTRA = new ItemRecordCustom("disc_fake_orchestra", SoundRegistry.fakeOrchestra, "Fake Orchestra");
+	public static final Item DISC_FAKE_ORCHESTRA = (Item) new ItemRecordCustom("disc_fake_orchestra", SoundRegistry.fakeOrchestra, "Fake Orchestra").setHasEffect().setRarity(EnumRarity.EPIC);
 	
 	public static void preInit()
 	{

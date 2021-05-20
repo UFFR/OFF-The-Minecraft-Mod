@@ -50,9 +50,8 @@ public class MachineCompactor extends BlockContainer
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(SoundType.METAL);
-		setHardness(ModBlocks.defaultHardness);
-		setResistance(ModBlocks.defaultResistance);
-		setHarvestLevel(ModBlocks.defaultToolType, ModBlocks.defaultHarvestLevel);
+		setHardness(2.0F);
+		setResistance(5.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, false));
 		this.isActive = false;
 		ModBlocks.BLOCKS.add(this);

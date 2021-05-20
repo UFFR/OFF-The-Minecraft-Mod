@@ -32,36 +32,28 @@ public class ModBlocks
 	BlockStair: Self-explanatory
 	*/
 	
-	// Defaults
-	public static Material defaultMaterial = Material.ROCK;
-	public static SoundType defaultSound = SoundType.STONE;
-	public static Float defaultHardness = 2.0F;
-	public static Float defaultResistance = 5.0F;
-	public static String defaultToolType = "pickaxe";
-	public static Integer defaultHarvestLevel = 1;
-	
 	/* General */
 	// Material blocks
-	public static final Block BLOCK_METAL = new BlockBase("block_metal", Material.IRON, SoundType.METAL, 5.0F, 30.0F, "pickaxe", 2); // Storage for metal, may also be used as a fairly durably construction material
-	public static final Block BLOCK_PLASTIC = new BlockBase("block_plastic", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Storage for plastic, may also be used for a cheap construction material
+	public static final Block BLOCK_METAL = new BlockBase("block_metal", Material.IRON, SoundType.METAL).setCustomHarvestLevel("pickaxe", 2).setHardness(5.0F).setResistance(30.0F); // Storage for metal, may also be used as a fairly durable construction material
+	public static final Block BLOCK_PLASTIC = new BlockBase("block_plastic"); // Storage for plastic, may also be used for a cheap construction material
 	public static final Block BLOCK_SUGAR = new BlockFall("block_sugar", Material.SAND, 0); // Storage for sugar
 	
 	/* Generating blocks */
 	// Boring
-	public static final Block DIRT = new BlockBase("dirt", Material.GROUND, SoundType.GROUND, 0.5F, 0.5F, "shovel", 0); // Self-explanatory
-	public static final Block ROCK = new BlockBase("rock", defaultMaterial, defaultSound, defaultHardness, 6.0F, defaultToolType, defaultHarvestLevel); // Basically stone, considering on adding a cobblestone equivalent
+	public static final Block DIRT = new BlockBase("dirt", Material.GROUND, SoundType.GROUND).setCustomHarvestLevel("shovel", 0).setHardness(0.5F).setResistance(0.5F); // Self-explanatory
+	public static final Block ROCK = new BlockBase("rock").setResistance(6.0F); // Basically stone, considering on adding a cobblestone equivalent
 
 	// Ores
-	public static final Block ORE_SMOKE = new BlockOre("ore_smoke", defaultMaterial, defaultHardness, 2.5F); // Brittle, found underground
-	public static final Block ORE_SMOKE_EMPTY = new BlockOre("ore_smoke_empty", Material.ROCK, 0.5F, 0.5F); // Slightly less brittle, can be smelted back into rock
-	public static final Block ORE_METAL = new BlockBase("ore_metal", defaultMaterial, defaultSound, 3.0F, 8.0F, defaultToolType, defaultHarvestLevel); // Slightly tougher than regular rock, slightly less common than smoke
+	public static final Block ORE_SMOKE = new BlockOre("ore_smoke"); // Brittle, found underground
+	public static final Block ORE_SMOKE_EMPTY = new BlockOre("ore_smoke_empty").setHardness(0.5F).setResistance(0.5F); // More brittle, can be smelted back into rock
+	public static final Block ORE_METAL = new BlockBase("ore_metal").setHardness(3.0F).setResistance(8.0F); // Slightly tougher than regular rock, slightly less common than smoke
 	
 	/* Non generating */
 	// Trading crates. Self-explanatory, can either be bought for material or made and sold for credits
-	public static final Block CRATE_SMOKE = new BlockCrate("crate_smoke", Material.WOOD);
-	public static final Block CRATE_METAL = new BlockCrate("crate_metal", Material.WOOD);
-	public static final Block CRATE_PLASTIC = new BlockCrate("crate_plastic", Material.WOOD);
-	public static final Block CRATE_MEAT = new BlockCrate("crate_meat", Material.WOOD);
+	public static final Block CRATE_SMOKE = new BlockCrate("crate_smoke");
+	public static final Block CRATE_METAL = new BlockCrate("crate_metal");
+	public static final Block CRATE_PLASTIC = new BlockCrate("crate_plastic");
+	public static final Block CRATE_MEAT = new BlockCrate("crate_meat");
 	
 	// Oooo spooky blocks (they're actually just special blocks for one reason or another)
 	public static final Block NOTHING = new BlockSpecial("nothing", Material.BARRIER, SoundRegistry.nullBlock, 18000000.0F, 18000000.0F, "", 100, 255, 0F, true); // Standard void block, unbreakable
@@ -73,23 +65,23 @@ public class ModBlocks
 	
 	/* Industrial Furnace */
 	// Exclusive
-	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Basically "smooth stone", you can use it for decoration of some sort I suppose
-	public static final Block FURNACE_CORE = new MachineKilnCore("furnace_core", defaultMaterial); // Main block of the furnace
-	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Sort of an "extension" of the core
+	public static final Block HEAT_SHIELDING = new BlockBase("heat_shielding"); // Basically "smooth stone", you can use it for decoration of some sort I suppose
+	public static final Block FURNACE_CORE = new MachineKilnCore("furnace_core"); // Main block of the furnace
+	public static final Block FURNACE_CORE_COMPONENT = new BlockBase("furnace_core_component"); // Sort of an "extension" of the core
 	public static final Block FURNACE_ACCESS = new MachineKilnHatch("furnace_access"); // Access port to core
 
 	// Non-exclusive
-	public static final Block BRICKS_METAL = new BlockBase("bricks_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Outer casing, can also be used as a decent building material
+	public static final Block BRICKS_METAL = new BlockBase("bricks_metal").setCustomHarvestLevel("pickaxe", 2).setHardness(4.0F).setResistance(20.0F); // Outer casing, can also be used as a decent building material
 	
 	/* Miscellaneous */
 	// Machines
 	public static final Block COMPACTOR = new MachineCompactor("compactor"); // Compacts "liquid" plastic ingots into fully solid ones, can also make plates
 	// Building blocks
-	public static final Block BRICKS = new BlockBase("bricks", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel); // Cheap building material, most generated buildings use it.
-	public static final Block STAIRS_BRICK_METAL = new BlockStair(BRICKS_METAL.getDefaultState(), "stairs_brick_metal", Material.IRON, SoundType.METAL, 4.0F, 20.0F, defaultToolType, 2); // Stairs made from metallic bricks
-	public static final Block STAIRS_METAL = new BlockStair(BLOCK_METAL.getDefaultState(), "stairs_metal", Material.IRON, SoundType.METAL, 5.0F, 30.0F, defaultToolType, 2); // Stairs made from metal
-	public static final Block STAIRS_PLASTIC = new BlockStair(BLOCK_PLASTIC.getDefaultState(), "stairs_plastic", defaultMaterial, defaultSound, defaultHardness, defaultResistance, defaultToolType, defaultHarvestLevel); // Stairs made from plastic
-	public static final Block STAIRS_BRICK = new BlockStair(BRICKS.getDefaultState(), "stairs_brick", defaultMaterial, defaultSound, 2.5F, 15.0F, defaultToolType, defaultHarvestLevel); // Stairs made from bricks
+	public static final Block BRICKS = new BlockBase("bricks").setHardness(2.5F).setResistance(15.0F); // Cheap building material, most generated buildings use it.
+	public static final Block STAIRS_BRICK_METAL = new BlockStair(BRICKS_METAL.getDefaultState(), "stairs_brick_metal", SoundType.METAL).setHardness(4.0F).setResistance(20.0F); // Stairs made from metallic bricks
+	public static final Block STAIRS_METAL = new BlockStair(BLOCK_METAL.getDefaultState(), "stairs_metal", SoundType.METAL).setHardness(5.0F).setResistance(30.0F); // Stairs made from metal
+	public static final Block STAIRS_PLASTIC = new BlockStair(BLOCK_PLASTIC.getDefaultState(), "stairs_plastic", SoundType.STONE); // Stairs made from plastic
+	public static final Block STAIRS_BRICK = new BlockStair(BRICKS.getDefaultState(), "stairs_brick", SoundType.STONE).setHardness(2.5F).setResistance(15.0F); // Stairs made from bricks
 
 	public static void preInit()
 	{

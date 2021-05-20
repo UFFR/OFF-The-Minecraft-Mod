@@ -47,7 +47,6 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 			@Override
 			protected void onContentsChanged(int slot)
 			{
-				System.out.println("[KILN] Contents changed, marking dirty");
 				markDirty();
 				super.onContentsChanged(slot);
 			}
@@ -361,7 +360,7 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
-		compound.setInteger("cookTime", (short) progress);
+		compound.setInteger("cookTime", progress);
 		compound.setInteger("fuel", fuel);
 		compound.setFloat("heat", heat);
 		compound.setTag("inventory", inventory.serializeNBT());
@@ -372,12 +371,10 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 	{
 		if (hasKilnRecipe)
 		{
-			System.out.println("[KILN] Heat required for recipe: " + KilnRecipes.getOutput(inventory.getStackInSlot(1).getItem()).heat);
-			return KilnRecipes.getOutput(inventory.getStackInSlot(1).getItem()).heat <= heat;
+			return KilnRecipes.getRecipe(inventory.getStackInSlot(1).getItem()).heat <= heat;
 		}
 		else
 		{
-			System.out.println("[KILN] Heat required for recipe: 350");
 			return heat >= 350;
 		}
 	}
@@ -411,15 +408,15 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 	{
 		if (inventory.getStackInSlot(1).isEmpty())
 		{
-			System.out.println("[KILN] Input is empty");
+			//System.out.println("[KILN] Input is empty");
 			return false;
 		}
 		else
 		{
 			hasFurnaceRecipe = !FurnaceRecipes.instance().getSmeltingResult(inventory.getStackInSlot(1)).isEmpty();
-			hasKilnRecipe = false;
+			hasKilnRecipe = !KilnRecipes.getRecipe(inventory.getStackInSlot(1).getItem()).getOutput().isEmpty();
 			ItemStack recipe;
-			if (KilnRecipes.getOutput(inventory.getStackInSlot(1).getItem()) != null)
+			if (KilnRecipes.getRecipe(inventory.getStackInSlot(1).getItem()) != null)
 			{
 				System.out.println("[KILN] Has kiln recipe");
 				hasKilnRecipe = true;
@@ -427,7 +424,7 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 			
 			if (hasKilnRecipe)
 			{
-				recipe = KilnRecipes.getOutput(inventory.getStackInSlot(1).getItem()).output;
+				recipe = KilnRecipes.getRecipe(inventory.getStackInSlot(1).getItem()).output;
 				System.out.println("[KILN] Kiln recipe: " + recipe.getItem());
 			}
 			else if (hasFurnaceRecipe)
@@ -439,32 +436,26 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 			else
 			{
 				recipe = null;
-			}
-			
-			if (recipe == null || recipe.isEmpty())
-			{
-				System.out.println("[KILN] No recipe at all");
 				return false;
+			}
+		
+			if (inventory.getStackInSlot(1).isEmpty())
+			{
+				return true;
+			}
+			else if (!inventory.getStackInSlot(1).isItemEqual(recipe))
+			{
+				return false;
+			}
+			else if (inventory.getStackInSlot(2).getCount() < inventory.getSlotLimit(1) && inventory.getStackInSlot(2).getCount() < inventory.getStackInSlot(2).getMaxStackSize())
+			{
+				return true;
 			}
 			else
 			{
-				if (inventory.getStackInSlot(1).isEmpty())
-				{
-					return true;
-				}
-				else if (!inventory.getStackInSlot(1).isItemEqual(recipe))
-				{
-					return false;
-				}
-				else if (inventory.getStackInSlot(2).getCount() < inventory.getSlotLimit(1) && inventory.getStackInSlot(2).getCount() < inventory.getStackInSlot(2).getMaxStackSize())
-				{
-					return true;
-				}
-				else
-				{
-					return (inventory.getStackInSlot(2).getCount() < recipe.getMaxStackSize()) && (inventory.getSlotLimit(2) < recipe.getCount());
-				}
+				return (inventory.getStackInSlot(2).getCount() < recipe.getMaxStackSize()) && (inventory.getSlotLimit(2) < recipe.getCount());
 			}
+		
 		}
 	}
 	
@@ -477,7 +468,7 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 			
 			if (hasKilnRecipe)
 			{
-				itemStack = KilnRecipes.getOutput(inventory.getStackInSlot(1).getItem()).output;
+				itemStack = KilnRecipes.getRecipe(inventory.getStackInSlot(1).getItem()).getOutput();
 			}
 			else
 			{
@@ -486,19 +477,16 @@ public class TileEntityKilnCore extends TileEntity implements ITickable
 			
 			if (inventory.getStackInSlot(2).isEmpty())
 			{
-				System.out.println("[KILN] Processing successful, new item stack in output slot");
 				inventory.setStackInSlot(2, itemStack.copy());
 				processingSuccessful = true;
 			}
 			else if (inventory.getStackInSlot(2).isItemEqual(itemStack))
 			{
-				System.out.println("[KILN] Processing successful, current item stack grown by: " + itemStack.getCount());
 				inventory.getStackInSlot(2).grow(itemStack.getCount());
 				processingSuccessful = true;
 			}
 			if (processingSuccessful)
 			{
-				System.out.println("[KILN] Input slot shrunk by 1");
 				inventory.getStackInSlot(1).shrink(1);
 			}
 		}

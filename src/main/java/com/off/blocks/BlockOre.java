@@ -3,13 +3,11 @@ package com.off.blocks;
 import java.util.List;
 import java.util.Random;
 
-import com.off.MainInit;
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.util.IItemLore;
 import com.off.util.ItemLore;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -18,16 +16,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.world.World;
 
-public class BlockOre extends Block
+public class BlockOre extends BlockBase implements IItemLore
 {
-	public BlockOre(String name, Material material, Float hardness, Float resistance)
+	public BlockOre(String name)
 	{
-		super(material);
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		setCreativeTab(MainInit.tabOFFBlocks);
-		setHardness(hardness);
-		setResistance(resistance);
+		super(name);
 		setLightOpacity(0);
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

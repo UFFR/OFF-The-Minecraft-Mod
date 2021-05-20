@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.off.init.ModBlocks;
 import com.off.init.ModItems;
+import com.off.util.IItemLore;
 import com.off.util.ItemLore;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -23,16 +23,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
-public class BlockCrate extends Block
+public class BlockCrate extends BlockBase implements IItemLore
 {
 
-	public BlockCrate(String name, Material materialIn)
+	public BlockCrate(String name)
 	{
-		super(materialIn);
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		setSoundType(SoundType.WOOD);
-		setHardness(2.5F);
+		super(name, Material.WOOD, SoundType.WOOD);
 		setResistance(2.5F);
 		setHarvestLevel("axe", 0);
 		ModBlocks.BLOCKS.add(this);
